@@ -1,0 +1,74 @@
+[
+    {
+        "id": "span",
+        "name": "Spa",
+        "icon": "/temporal/img/icon_span.png",
+        "image": "/temporal/img/span_image_experiences.jpg"
+    },
+    {
+        "id": "shopping",
+        "name": "Spa",
+        "icon": "/temporal/img/icon_span.png",
+        "image": "/temporal/img/span_image_experiences.jpg"
+    },
+    {
+        "id": "yatch_trip",
+        "name": "Spa",
+        "icon": "/temporal/img/icon_span.png",
+        "image": "/temporal/img/span_image_experiences.jpg"
+    },
+    {
+        "id": "fishing",
+        "name": "Spa",
+        "icon": "/temporal/img/icon_span.png",
+        "image": "/temporal/img/span_image_experiences.jpg"
+    },
+    {
+        "id": "snorkeling",
+        "name": "Spa",
+        "icon": "/temporal/img/icon_span.png",
+        "image": "/temporal/img/span_image_experiences.jpg"
+    },
+    {
+        "id": "cultural_tours",
+        "name": "Spa",
+        "icon": "/temporal/img/icon_span.png",
+        "image": "/temporal/img/span_image_experiences.jpg"
+    },
+    {
+        "id": "watersports",
+        "name": "Spa",
+        "icon": "/temporal/img/icon_span.png",
+        "image": "/temporal/img/span_image_experiences.jpg"
+    },
+    {
+        "id": "shows_nightlife",
+        "name": "Spa",
+        "icon": "/temporal/img/icon_span.png",
+        "image": "/temporal/img/span_image_experiences.jpg"
+    },
+    {
+        "id": "theme_parks",
+        "name": "Spa",
+        "icon": "/temporal/img/icon_span.png",
+        "image": "/temporal/img/span_image_experiences.jpg"
+    },
+    {
+        "id": "dining",
+        "name": "Spa",
+        "icon": "/temporal/img/icon_span.png",
+        "image": "/temporal/img/span_image_experiences.jpg"
+    },
+    {
+        "id": "encounters_animals",
+        "name": "Spa",
+        "icon": "/temporal/img/icon_span.png",
+        "image": "/temporal/img/span_image_experiences.jpg"
+    },
+    {
+        "id": "golf",
+        "name": "Spa",
+        "icon": "/temporal/img/icon_span.png",
+        "image": "/temporal/img/span_image_experiences.jpg"
+    }
+]
