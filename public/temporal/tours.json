@@ -1,74 +1,20 @@
 [
     {
-        "id": "span",
-        "name": "Spa",
-        "icon": "/temporal/img/icon_span.png",
-        "image": "/temporal/img/span_image_experiences.jpg"
+        "id": "Y2",
+        "name": "Catamaran Trip to Isla",
+        "image": "/temporal/img/catamaran_friends.png",
+        "descripcion": "descripcion de catamaran trip to isla"
     },
     {
-        "id": "shopping",
-        "name": "Spa",
-        "icon": "/temporal/img/icon_span.png",
-        "image": "/temporal/img/span_image_experiences.jpg"
+        "id": "Y3",
+        "name": "Catamaran Trip to Isla Luxury",
+        "image": "/temporal/img/catamaran_isla.png",
+        "descripcion": "descripcion de catamaran trip to isla luxury"
     },
     {
-        "id": "yatch_trip",
-        "name": "Spa",
-        "icon": "/temporal/img/icon_span.png",
-        "image": "/temporal/img/span_image_experiences.jpg"
-    },
-    {
-        "id": "fishing",
-        "name": "Spa",
-        "icon": "/temporal/img/icon_span.png",
-        "image": "/temporal/img/span_image_experiences.jpg"
-    },
-    {
-        "id": "snorkeling",
-        "name": "Spa",
-        "icon": "/temporal/img/icon_span.png",
-        "image": "/temporal/img/span_image_experiences.jpg"
-    },
-    {
-        "id": "cultural_tours",
-        "name": "Spa",
-        "icon": "/temporal/img/icon_span.png",
-        "image": "/temporal/img/span_image_experiences.jpg"
-    },
-    {
-        "id": "watersports",
-        "name": "Spa",
-        "icon": "/temporal/img/icon_span.png",
-        "image": "/temporal/img/span_image_experiences.jpg"
-    },
-    {
-        "id": "shows_nightlife",
-        "name": "Spa",
-        "icon": "/temporal/img/icon_span.png",
-        "image": "/temporal/img/span_image_experiences.jpg"
-    },
-    {
-        "id": "theme_parks",
-        "name": "Spa",
-        "icon": "/temporal/img/icon_span.png",
-        "image": "/temporal/img/span_image_experiences.jpg"
-    },
-    {
-        "id": "dining",
-        "name": "Spa",
-        "icon": "/temporal/img/icon_span.png",
-        "image": "/temporal/img/span_image_experiences.jpg"
-    },
-    {
-        "id": "encounters_animals",
-        "name": "Spa",
-        "icon": "/temporal/img/icon_span.png",
-        "image": "/temporal/img/span_image_experiences.jpg"
-    },
-    {
-        "id": "golf",
-        "name": "Spa",
-        "icon": "/temporal/img/icon_span.png",
-        "image": "/temporal/img/span_image_experiences.jpg"
+        "id": "Y4",
+        "name": "Catamaran Trip for friends to Isla",
+        "image": "/temporal/img/catamaran.png",
+        "descripcion": "descripcion de catamaran trip to isla for friends"
     }
 ]

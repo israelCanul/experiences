@@ -9,6 +9,7 @@ import React, { Suspense } from "react";
 import { useQuery } from "./hooks";
 const Home = React.lazy(() => import("./pages/index"));
 const TourRelated = React.lazy(() => import("./pages/tour_related"));
+const Summary = React.lazy(() => import("./pages/summary"));
 
 function App() {
   let query = useQuery();
@@ -44,6 +45,11 @@ function App() {
             <Route exact path={"/tour_related"}>
               <Suspense fallback={<div>Loading...</div>}>
                 <TourRelated />
+              </Suspense>
+            </Route>
+            <Route exact path={"/tour_summary"}>
+              <Suspense fallback={<div>Loading...</div>}>
+                <Summary />
               </Suspense>
             </Route>
 

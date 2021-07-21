@@ -4,7 +4,6 @@ import { getTexto } from "../libs/language";
 import { useExperiences } from "../hooks/index";
 import Experience from "./experience_item";
 import { useState } from "react";
-console.log(style);
 const ExperiencesList = () => {
   const [selecteds, setSelecteds] = useState([]);
   const Experiences = useExperiences();
@@ -58,7 +57,9 @@ const ExperiencesList = () => {
       {renderExperiences}
       <div className={style.actions}>
         {selecteds.length > 0 ? (
-          <Link to="/tour_related">{getTexto("Continue")}</Link>
+          <Link to="/tour_related" state={{ search: window.location.search }}>
+            {getTexto("Continue")}
+          </Link>
         ) : (
           <a href="/" className={style.action_disabled}>
             {getTexto("Continue")}

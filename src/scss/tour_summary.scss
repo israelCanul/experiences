@@ -1,0 +1,257 @@
+@import "helpers";
+.summary {
+  .title_summary {
+    // background-color: red;
+    padding: 5px;
+    padding-bottom: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: $monse;
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+      padding-bottom: 20px;
+    }
+    .title {
+      //   flex: 1;
+      width: 100%;
+      text-align: center;
+      //   background-color: blue;
+      @include tablet {
+        max-width: 300px;
+      }
+      h3 {
+        margin: 5px 0px 0px;
+      }
+    }
+    .description {
+      flex: 1;
+      text-align: center;
+      padding: 0px 20px;
+      @include tablet {
+        text-align: left;
+      }
+    }
+  }
+  .detail {
+    // background-color: yellow;
+    width: 100%;
+    min-height: 200px;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    font-family: $monse;
+    @include tablet {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+    }
+    @include desktop {
+      grid-template-columns: 1fr 1fr;
+    }
+    .gallery {
+      grid-column: auto/span 1;
+      grid-row: auto/span 1;
+      position: relative;
+      display: flex;
+      justify-content: stretch;
+      align-items: stretch;
+      // max-width: 600px;
+      @include tablet {
+        // min-height: auto;
+      }
+      .wrapper_gallery {
+        flex: 1;
+        display: flex;
+        flex-direction: column-reverse;
+        @include desktop {
+          flex-direction: row;
+        }
+        .thumbnails {
+          padding: 5px;
+          width: auto;
+          // background-color: red;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          flex-wrap: wrap;
+          justify-content: center;
+          cursor: pointer;
+          @include desktop {
+            flex-direction: column;
+            justify-content: flex-start;
+          }
+          .thumbnail {
+            width: 70px;
+            margin: 0px 3px;
+            @include desktop {
+              width: 100px;
+              margin: 2px 0px;
+            }
+          }
+        }
+        .viewer {
+          flex: 1;
+          // background-color: blue;
+          padding: 5px 5px;
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+    .includes {
+      grid-column: auto/span 1;
+      grid-row: auto/span 1;
+      // background-color: gray;
+      padding: 0px 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      p,
+      h4 {
+        margin: 5px;
+      }
+    }
+    .total {
+      grid-column: auto/span 1;
+      grid-row: auto/span 1;
+      // background-color: red;
+      padding: 15px 10px;
+      @include tablet {
+        grid-column: auto/span 2;
+      }
+      ul {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        @include tablet {
+          margin: 0px auto;
+          max-width: 600px;
+          padding-bottom: 10px;
+          border-bottom: 2px solid rgba($grayTextRR, 0.4);
+        }
+        li {
+          display: flex;
+          flex-direction: row;
+          padding: 5px 0px;
+          .description {
+            flex: 1;
+            padding-right: 5px;
+            display: flex;
+            // justify-content: center;
+            align-items: center;
+          }
+          .price {
+            // background-color: blue;
+            width: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &.totalPrice {
+              color: $blueRR;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+  .selectType {
+    font-family: $monse;
+    padding: 15px 0px;
+    @include tablet {
+      margin: 0px auto;
+      max-width: 600px;
+    }
+
+    .noteSection {
+      margin-bottom: 15px;
+      p {
+        margin: 5px 10px;
+        text-align: center;
+        @include tablet {
+          text-align: left;
+        }
+        .note {
+          font-weight: bold;
+        }
+      }
+    }
+    .or,
+    .agreeterms,
+    .agreeregular {
+      padding: 10px 10px;
+      // background-color: red;
+    }
+    .input {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      // justify-content: center;
+      .span {
+        margin: 0px 5px;
+      }
+      .radiobutton {
+        // flex: 1;
+        // background-color: rgba($grayTextRR, 0.4);
+
+        margin-right: 10px;
+        width: 20px;
+        min-width: 20px;
+        height: 20px;
+        border: 2px solid rgba($grayTextRR, 0.4);
+        border-radius: 15px;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        -ms-border-radius: 15px;
+        -o-border-radius: 15px;
+        &.active {
+          border-color: $blueRR;
+          background-color: rgba($blueRR, 0.2);
+        }
+      }
+    }
+    .termsandconditions {
+      margin: 10px 0px 0px;
+      background-color: rgba($blueRR, 0.1);
+      text-align: left;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      &.active {
+        padding: 5px 5px;
+      }
+      p {
+        margin: 0px;
+        padding: 0px 0px 10px;
+      }
+      .terms {
+        padding: 10px 5px 0px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        @include mobile {
+          margin: 0px auto;
+          max-width: 300px;
+        }
+        .term {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          padding-bottom: 5px;
+          @include desktop {
+            width: 50%;
+          }
+          img {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+}

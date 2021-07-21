@@ -1,5 +1,3 @@
-import { getTexto } from "../libs/language";
-
 const SkeletonTours = () => {
   return (
     <div className="toursRersult skeleton">

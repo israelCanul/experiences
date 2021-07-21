@@ -11,6 +11,7 @@ const Imagen = ({
     <picture height={height} width={width} className={className}>
       <source></source>
       <img
+        className="image"
         loading="lazy"
         height={height}
         width={width}
