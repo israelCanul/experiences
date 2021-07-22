@@ -1,0 +1,27 @@
+$blueRR: #00377c;
+$grayTextRR: rgb(117, 118, 120);
+
+.input {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  span {
+    // margin: 0px 5px;
+  }
+  .radiobutton {
+    margin-right: 10px;
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
+    border: 2px solid rgba($grayTextRR, 0.4);
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    &.active {
+      border-color: $blueRR;
+      background-color: rgba($blueRR, 0.2);
+    }
+  }
+}

@@ -179,53 +179,18 @@
         }
       }
     }
-    .or,
+    .or {
+      padding: 0px 10px;
+    }
     .agreeterms,
     .agreeregular {
       padding: 10px 10px;
       // background-color: red;
     }
-    .input {
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      // justify-content: center;
-      .span {
-        margin: 0px 5px;
-      }
-      .radiobutton {
-        // flex: 1;
-        // background-color: rgba($grayTextRR, 0.4);
-
-        margin-right: 10px;
-        width: 20px;
-        min-width: 20px;
-        height: 20px;
-        border: 2px solid rgba($grayTextRR, 0.4);
-        border-radius: 15px;
-        -webkit-border-radius: 15px;
-        -moz-border-radius: 15px;
-        -ms-border-radius: 15px;
-        -o-border-radius: 15px;
-        &.active {
-          border-color: $blueRR;
-          background-color: rgba($blueRR, 0.2);
-        }
-      }
-    }
     .termsandconditions {
-      margin: 10px 0px 0px;
-      background-color: rgba($blueRR, 0.1);
-      text-align: left;
-      overflow: hidden;
-      transition: all 0.3s ease-in-out;
-      -webkit-transition: all 0.3s ease-in-out;
-      -moz-transition: all 0.3s ease-in-out;
-      -ms-transition: all 0.3s ease-in-out;
-      -o-transition: all 0.3s ease-in-out;
-      &.active {
-        padding: 5px 5px;
-      }
+      margin: 10px 0px;
+      padding: 10px 5px;
+      background-color: rgba($blueRR, 0.2);
       p {
         margin: 0px;
         padding: 0px 0px 10px;
@@ -249,6 +214,109 @@
           }
           img {
             margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+  .celebrationsSection {
+    border-top: 1px solid $grayRR;
+    font-family: $monse;
+    // background-color: red;
+    padding: 10px 10px;
+    h3,
+    h4 {
+      margin: 0px;
+      padding: 5px 0px;
+    }
+    h3 {
+      width: 100%;
+      max-width: 100%;
+      text-align: center;
+      @include tablet {
+        max-width: 300px;
+      }
+    }
+    &_wrapper {
+      margin: 0px auto;
+      max-width: 600px;
+      @include tablet {
+        padding: 0px 10px;
+      }
+      .celebrations {
+        display: flex;
+        flex-direction: column;
+        @include tablet {
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+        .input {
+          width: 100%;
+          margin: 10px 0px 5px;
+          @include tablet {
+            width: 50%;
+          }
+        }
+      }
+    }
+  }
+  .booksection {
+    border-top: 1px solid $grayRR;
+    font-family: $monse;
+    // background-color: red;
+    padding: 10px 10px;
+    h3,
+    p {
+      margin: 0px;
+      padding: 5px 0px;
+    }
+    h3 {
+      width: 100%;
+      max-width: 100%;
+      text-align: center;
+      @include tablet {
+        max-width: 300px;
+      }
+    }
+    &_wrapper {
+      margin: 0px auto;
+      max-width: 600px;
+      @include tablet {
+        padding: 0px 10px;
+      }
+      .datepickersection {
+        display: flex;
+        flex-direction: column;
+        @include tablet {
+          padding: 0px 10px;
+          flex-direction: row;
+        }
+        .picker {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 10px 10px;
+          @include tablet {
+            width: 50%;
+          }
+          .react-datepicker__time-list-item,
+          .react-datepicker__header,
+          .react-datepicker__day,
+          input {
+            font-family: #{$monse} !important;
+          }
+          input,
+          .react-datepicker-wrapper {
+            width: 100%;
+          }
+          input {
+            font-size: 13px;
+            border-radius: 4px;
+            box-shadow: inset 0 2px 2px #e9e9e9;
+            border: 1px solid #aeaeae;
+            line-height: 16px;
+            padding: 6px 10px 5px;
           }
         }
       }

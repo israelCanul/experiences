@@ -1,9 +1,18 @@
 import { getTexto } from "../libs/language";
+import { useState } from "react";
 import Header from "../sections/header";
 import TourDetail from "../components/tour_detail";
 import ContinueSummary from "../components/continue_summary";
+import AboutStay from "../components/about_your_stay";
+import BookApointment from "../components/book_appointment";
+import Collapser from "../components/collapser";
 import "../scss/tour_summary.scss";
 const Summary = () => {
+  //agree/disagree to take the meeting
+  const [agree, setAgree] = useState(null);
+  const [celebration, setCelebration] = useState("");
+  const [book, setBook] = useState(null);
+
   return (
     <div className="summary">
       <Header
@@ -23,7 +32,11 @@ const Summary = () => {
         </div>
       </div>
       <TourDetail />
-      <ContinueSummary />
+      <ContinueSummary agree={agree} setAgree={setAgree} />
+      <BookApointment setBook={setBook} />
+      <Collapser active={agree}>
+        <AboutStay celebration={celebration} setCelebration={setCelebration} />
+      </Collapser>
     </div>
   );
 };
