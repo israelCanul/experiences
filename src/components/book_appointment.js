@@ -2,11 +2,15 @@ import { useEffect, useState, forwardRef } from "react";
 import DatePicker from "react-datepicker";
 import { setMinutes, setHours, add } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
+import arrowdown from "../animations/arrow-down-thin.svg";
+
 const Book = ({ setBook }) => {
-  const [bookdate, setBookDate] = useState(add(new Date(), { days: 2 }));
-  const [booktime, setBooktime] = useState(new Date());
+  const [bookdate, setBookDate] = useState(null);
+  const [booktime, setBooktime] = useState(null);
   useEffect(() => {
-    setBook({ d: bookdate, t: booktime });
+    if (bookdate !== null && booktime !== null) {
+      setBook({ d: bookdate, t: booktime });
+    }
   }, [bookdate, booktime, setBook]);
 
   return (
@@ -20,6 +24,7 @@ const Book = ({ setBook }) => {
         <div className="datepickersection">
           <div className="date picker">
             <DatePicker
+              placeholderText="Choose a date"
               selected={bookdate}
               dateFormat="MM/dd/yyyy"
               minDate={add(new Date(), { days: 2 })}
@@ -29,6 +34,7 @@ const Book = ({ setBook }) => {
           </div>
           <div className="time picker">
             <DatePicker
+              placeholderText="Choose a Time"
               selected={booktime}
               onChange={(date) => setBooktime(date)}
               showTimeSelect={true}
@@ -38,6 +44,7 @@ const Book = ({ setBook }) => {
               maxTime={setHours(setMinutes(new Date(), 30), 20)}
               timeCaption="Time"
               dateFormat="h:mm aa"
+              customInput={<MyInput />}
             />
           </div>
         </div>
@@ -46,9 +53,10 @@ const Book = ({ setBook }) => {
   );
 };
 
-const MyInput = forwardRef(({ value, onClick }, ref) => (
-  <button className="example-custom-input" onClick={onClick} ref={ref}>
-    {value}
+const MyInput = forwardRef(({ value, onClick, placeholder }, ref) => (
+  <button className="custom-input" onClick={onClick} ref={ref}>
+    <span>{value ? value : placeholder}</span>
+    <img width="16" height="16" src={arrowdown} alt="arrow down" />
   </button>
 ));
 

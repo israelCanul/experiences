@@ -1,8 +1,23 @@
 import { createRef, useEffect, useState } from "react";
 import style from "../scss/collapser.module.scss";
 
-const Collapser = ({ children, className = "", active = false }) => {
+const Collapser = ({
+  children,
+  className = "",
+  active = false,
+  scroll = true,
+}) => {
   const Section = createRef();
+  const [isActive, setIsActive] = useState(active);
+  const [section, setSection] = useState(Section);
+  useEffect(() => {
+    if (active) setIsActive(active);
+    if (isActive) {
+      setTimeout(() => {
+        section.scrollIntoView({ behavior: "smooth" });
+      }, 200);
+    }
+  }, [section, isActive, active]);
   const [initialized, setinitialized] = useState(false);
   const [size, setSize] = useState({ w: 0, h: 0 });
   useEffect(() => {
@@ -12,8 +27,10 @@ const Collapser = ({ children, className = "", active = false }) => {
         w: Section.current.clientWidth,
       });
       setinitialized(true);
+      setSection(Section.current);
     }
   }, [initialized, Section, size.h, size.w]);
+
   return (
     <div
       className={`${className} ${style.collapser}  ${

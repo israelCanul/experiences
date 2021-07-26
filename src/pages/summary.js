@@ -33,10 +33,23 @@ const Summary = () => {
       </div>
       <TourDetail />
       <ContinueSummary agree={agree} setAgree={setAgree} />
-      <BookApointment setBook={setBook} />
       <Collapser active={agree}>
+        <BookApointment setBook={setBook} />
+      </Collapser>
+      <Collapser
+        active={agree !== null && ((agree && book !== null) || !agree)}
+      >
         <AboutStay celebration={celebration} setCelebration={setCelebration} />
       </Collapser>
+      <div className="actions active">
+        {agree !== null &&
+        celebration !== "" &&
+        ((agree && book !== null) || !agree) ? (
+          <a href="/">Continue</a>
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 };

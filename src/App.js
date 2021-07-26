@@ -10,6 +10,7 @@ import { useQuery } from "./hooks";
 const Home = React.lazy(() => import("./pages/index"));
 const TourRelated = React.lazy(() => import("./pages/tour_related"));
 const Summary = React.lazy(() => import("./pages/summary"));
+const Confirmation = React.lazy(() => import("./pages/confirmation"));
 
 function App() {
   let query = useQuery();
@@ -30,43 +31,58 @@ function App() {
   };
   return (
     <div className="App">
-      <div className="main_component">
-        <Router>
-          <Switch>
-            <Route path={"/error_page"}>
+      <Router>
+        <Switch>
+          <Route path={"/error_page"}>
+            <div className="main_component">
               <MissingParams />
-            </Route>
-            <Route exact path={"/"}>
-              {checkForParams()}
+            </div>
+          </Route>
+
+          <Route exact path={"/"}>
+            {checkForParams()}
+            <div className="main_component fullscreen">
               <Suspense fallback={<div>Loading...</div>}>
                 <Home />
               </Suspense>
-            </Route>
-            <Route exact path={"/tour_related"}>
+            </div>
+          </Route>
+          <Route exact path={"/tour_related"}>
+            <div className="main_component">
               <Suspense fallback={<div>Loading...</div>}>
                 <TourRelated />
               </Suspense>
-            </Route>
-            <Route exact path={"/tour_summary"}>
+            </div>
+          </Route>
+          <Route exact path={"/tour_summary"}>
+            <div className="main_component">
               <Suspense fallback={<div>Loading...</div>}>
                 <Summary />
               </Suspense>
-            </Route>
-
-            <Route component={NotFound} />
-          </Switch>
-        </Router>
-      </div>
+            </div>
+          </Route>
+          <Route exact path={"/confirmation"}>
+            <div className="main_component fullscreen">
+              <Suspense fallback={<div>Loading...</div>}>
+                <Confirmation />
+              </Suspense>
+            </div>
+          </Route>
+          <Route component={NotFound} />
+        </Switch>
+      </Router>
     </div>
   );
 }
 
 const NotFound = () => {
   return (
-    <div className="NotFound">
-      <p>
-        Not Found - <span>404</span>
-      </p>
+    <div className="main_component">
+      <div className="NotFound">
+        <p>
+          Not Found - <span>404</span>
+        </p>
+      </div>
     </div>
   );
 };
@@ -74,9 +90,15 @@ const MissingParams = () => {
   let query = useQuery();
   console.log(query);
   return (
-    <div className="error_page">
-      <p> Error: </p>
-      {query ? <p>{query.error ? query.error : "Something was wrong"}</p> : ""}
+    <div className="main_component">
+      <div className="error_page">
+        <p> Error: </p>
+        {query ? (
+          <p>{query.error ? query.error : "Something was wrong"}</p>
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 };

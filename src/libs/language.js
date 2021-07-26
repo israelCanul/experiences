@@ -32,4 +32,6 @@ textos = {
   "No charge will be made to your credit card at this time. Your Vacation Package will be charged to your room account until you check out of your stay.":
     "No charge will be made to your credit card at this time. Your Vacation Package will be charged to your room account until you check out of your stay.",
   "Tour summary": "Tour summary",
+  Cancun: "Cancún",
+  "preference center": "preference center",
 };
