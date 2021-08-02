@@ -1,4 +1,5 @@
 @import "helpers";
+@import "animations";
 .ExperiencesList {
   width: 100vw;
   height: auto;
@@ -10,13 +11,16 @@
   background-color: $blueRR;
   @include tablet {
     gap: 0px;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr 1fr 1fr 1fr auto;
   }
   @include desktop {
     height: 100%;
-    grid-template-columns: repeat(6, auto);
+    grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 1fr 1fr auto;
+  }
+  .experiencexqueleton {
+    background-size: 400% 400% !important;
   }
   .experience {
     grid-column: auto/span 1;
@@ -28,6 +32,9 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     @include mobile {
       height: 150px;
     }
@@ -49,6 +56,9 @@
       position: relative;
       width: 40px;
       height: auto;
+    }
+    .small {
+      width: 20px !important;
     }
     p {
       color: white;

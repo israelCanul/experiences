@@ -9,7 +9,21 @@ export function useExperiences() {
     if (experiences == null) {
       getExperiences().then((res) => {
         if (cancel) return;
-        setExperiences(res.data);
+        console.log(res);
+        let experiences = [];
+        res.data.results.map((exp) => {
+          let temp = {
+            id: exp.ConverterClassID,
+            name: exp.ConverterClassDescEng
+              ? exp.ConverterClassDescEng
+              : exp.ConverterClassDescSpa,
+            icon: exp.ConverterClassIcon,
+            image: exp.ConverterClassImage,
+          };
+          experiences.push(temp);
+          return true;
+        });
+        setExperiences(experiences);
       });
       return () => {
         cancel = true;

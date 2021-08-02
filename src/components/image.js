@@ -7,9 +7,10 @@ const Imagen = ({
   width = null,
   height = null,
 }) => {
+  let name = src.split(".");
   return (
     <picture height={height} width={width} className={className}>
-      <source></source>
+      <source srcSet={name[0] + ".webp"} type="image/webp"></source>
       <img
         className="image"
         loading="lazy"

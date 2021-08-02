@@ -50,6 +50,17 @@ const ExperiencesList = () => {
       );
       return true;
     });
+  } else {
+    for (let index = 0; index < 12; index++) {
+      renderExperiences.push(
+        <div
+          key={index}
+          className={
+            style.experience + " animatedBlue " + style.experiencexqueleton
+          }
+        ></div>
+      );
+    }
   }
 
   return (

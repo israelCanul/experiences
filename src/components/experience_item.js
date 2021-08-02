@@ -7,6 +7,7 @@ const Experience = ({ data, selected = false, selectFunction = (d) => {} }) => {
   return (
     <div
       className={style.experience}
+      style={{ backgroundImage: `url("/img/steps/${data.image}.jpg")` }}
       onClick={() => {
         selectFunction(data);
       }}
@@ -16,12 +17,17 @@ const Experience = ({ data, selected = false, selectFunction = (d) => {} }) => {
       ) : (
         ""
       )}
-      <Imagen src={data.image} />
       <Imagen
-        width="40px"
+        width={"40px"}
         height="40px"
-        className={style.icon}
-        src={data.icon}
+        className={
+          style.icon +
+          " " +
+          (data.icon === "step1-fish-icon" || data.icon === "step1-food-icon"
+            ? style.small
+            : "")
+        }
+        src={"/img/steps/" + data.icon + ".png"}
       />
       <p>{data.name}</p>
     </div>
