@@ -13,10 +13,30 @@ export function getExperiences() {
       apiUrlSF +
         "/dtExtensions/FCE9536B-5642-460C-8DA0-5229762ECF26?fields=ConverterClassCode,ConverterClassID,ConverterClassImage,ConverterClassIcon,ConverterClassSeq,ConverterClassDescSpa"
     );
-  // return axios.get(apiUrl + "/temporal/experiences.json");
+}
+export function getConverters() {
+  if (getLanguage() === "en-US")
+    return axios.get(
+      apiUrlSF +
+        "/dtExtensions/9B63AB77-2647-4054-BABD-76E631650032?fields=ConverterID,ConverterCode,ConverterDescEng,ConverterDescSpa,ConverterProperty,ConverterClassID,ConverterImage,ConverterRegularPrice,ConverterSpecialPrice,ConverterSeq,ConverterCarrouselImage,ConverterIncludesEng,ConverterIncludesSpa,ItemRegularLInk,ItemRegularImage"
+    );
+  if (getLanguage() === "es-MX")
+    return axios.get(
+      apiUrlSF +
+        "/dtExtensions/9B63AB77-2647-4054-BABD-76E631650032?fields=ConverterID,ConverterCode,ConverterDescEng,ConverterDescSpa,ConverterProperty,ConverterClassID,ConverterImage,ConverterRegularPrice,ConverterSpecialPrice,ConverterSeq,ConverterCarrouselImage,ConverterIncludesEng,ConverterIncludesSpa,ItemRegularLInk,ItemRegularImage"
+    );
 }
 export function getTours() {
-  return axios.get(apiUrl + "/temporal/tours.json");
+  if (getLanguage() === "en-US")
+    return axios.get(
+      apiUrlSF +
+        "/dtExtensions/9B63AB77-2647-4054-BABD-76E631650032?fields=ConverterID,ConverterCode,ConverterDescEng,ConverterDescSpa,ConverterProperty,ConverterClassID,ConverterImage,ConverterRegularPrice,ConverterSpecialPrice,ConverterSeq,ConverterCarrouselImage,ConverterIncludesEng,ConverterIncludesSpa,ItemRegularLInk,ItemRegularImage"
+    );
+  if (getLanguage() === "es-MX")
+    return axios.get(
+      apiUrlSF +
+        "/dtExtensions/9B63AB77-2647-4054-BABD-76E631650032?fields=ConverterID,ConverterCode,ConverterDescEng,ConverterDescSpa,ConverterProperty,ConverterClassID,ConverterImage,ConverterRegularPrice,ConverterSpecialPrice,ConverterSeq,ConverterCarrouselImage,ConverterIncludesEng,ConverterIncludesSpa,ItemRegularLInk,ItemRegularImage"
+    );
 }
 export function getWheater(m) {
   return m === "f" ? axios.get(apiWheater) : axios.get(apiWheaterC);

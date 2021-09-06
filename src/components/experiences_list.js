@@ -1,14 +1,24 @@
 import style from "../scss/Experiences.module.scss";
 import { Link } from "react-router-dom";
 import { getTexto } from "../libs/language";
+import { saveExperiencesSelected } from "../libs/cookieManager";
 import { useExperiences } from "../hooks/index";
 import Experience from "./experience_item";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const ExperiencesList = () => {
   const [selecteds, setSelecteds] = useState([]);
   const Experiences = useExperiences();
   let renderExperiences = [];
 
+  useEffect(() => {
+    let idExperiences = [];
+    selecteds.map((select) => {
+      idExperiences.push(select.id);
+      return true;
+    });
+    console.log("experience selected", selecteds, idExperiences);
+    saveExperiencesSelected(idExperiences);
+  }, [selecteds]);
   let addExperience = (experience) => {
     const experienceSelected = selecteds.find(
       (selected) => selected.id === experience.id
@@ -72,7 +82,13 @@ const ExperiencesList = () => {
             {getTexto("Continue")}
           </Link>
         ) : (
-          <a href="/" className={style.action_disabled}>
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+            className={style.action_disabled}
+          >
             {getTexto("Continue")}
           </a>
         )}

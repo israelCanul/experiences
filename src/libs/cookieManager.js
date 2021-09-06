@@ -1,11 +1,11 @@
+import { getLanguage } from "./language";
+
 export function getCookieForm(cname, idiom = null) {
   var name = cname + "=";
   if (idiom != null) name = cname + "-" + idiom + "=";
   if (process.browser) {
     var decodedCookie = decodeURIComponent(window.document.cookie);
-
     var ca = decodedCookie.split(";");
-    // console.log(ca);
     for (var i = 0; i < ca.length; i++) {
       var c = ca[i];
       while (c.charAt(0) === " ") {
@@ -33,5 +33,34 @@ export function deleteCookieForm(cname, idiom = null) {
     if (idiom != null) cname = cname + "-" + idiom;
     console.log(cname + "=;" + expires + ";path=/");
     document.cookie = cname + "=;" + expires + ";path=/";
+  }
+}
+export function saveExperiencesSelected(params = []) {
+  setCookieForm("expS", params.join(), getLanguage());
+  return true;
+}
+export function getExperiencesSelected() {
+  let expSelected = getCookieForm("expS", getLanguage());
+  expSelected = expSelected.split(",");
+  if (expSelected.length > 0 || expSelected) return expSelected;
+  else return [];
+}
+export function saveParams(params = []) {
+  Object.keys(params).map((id) => {
+    setCookieForm(id, params[id], getLanguage());
+    return true;
+  });
+}
+export function checkForCookies(params = []) {
+  if (
+    getCookieForm("resID", getLanguage()) &&
+    getCookieForm("resort", getLanguage()) &&
+    getCookieForm("checkInDate", getLanguage()) &&
+    getCookieForm("stayID", getLanguage()) &&
+    getCookieForm("peopleID", getLanguage())
+  ) {
+    return true;
+  } else {
+    return false;
   }
 }

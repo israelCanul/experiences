@@ -2,7 +2,9 @@ import TourOnList from "./tour_on_list";
 
 const ToursList = ({ data, title, icon }) => {
   const renderTours = data.map((tour) => {
-    return <TourOnList key={tour.id} data={tour} />;
+    console.log(tour);
+    // return "";
+    return <TourOnList key={tour.ConverterClassID} data={tour} />;
   });
 
   return (

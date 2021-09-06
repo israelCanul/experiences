@@ -34,4 +34,11 @@ textos = {
   "Tour summary": "Tour summary",
   Cancun: "Cancún",
   "preference center": "preference center",
+  "Thank You": "Thank You",
+  "Your reservation has been placed": "Your reservation has been placed",
+  "Please read the details of your reservation found on your confirmation email":
+    "Please read the details of your reservation found on your confirmation email",
+  "Email sent: ": "Email sent: ",
+  "We look forward to welcoming you soon":
+    "We look forward to welcoming you soon",
 };

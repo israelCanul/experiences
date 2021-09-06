@@ -34,6 +34,7 @@
         padding: 5px 15px;
         @include tablet {
           width: 33.33%;
+          max-width: 33.33%;
         }
         .info {
           flex: 1;

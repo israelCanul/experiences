@@ -47,7 +47,8 @@ export function useTours() {
     if (tours == null) {
       getTours().then((res) => {
         if (cancel) return;
-        setTours(res.data);
+        //console.log(res.data.results);
+        setTours(res.data.results);
       });
       return () => {
         cancel = true;

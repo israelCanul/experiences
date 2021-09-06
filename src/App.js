@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import React, { Suspense } from "react";
 import { useQuery } from "./hooks";
+
 const Home = React.lazy(() => import("./pages/index"));
 const TourRelated = React.lazy(() => import("./pages/tour_related"));
 const Summary = React.lazy(() => import("./pages/summary"));
@@ -16,7 +17,14 @@ function App() {
   let query = useQuery();
   const checkForParams = () => {
     if (query != null) {
-      if (!query.peopleID && !query.subscriberKey) {
+      if (
+        !query.peopleID &&
+        !query.peopleID &&
+        !query.stayID &&
+        !query.resID &&
+        !query.checkInDate &&
+        !query.resort
+      ) {
         return (
           <Route>
             <Redirect
@@ -29,6 +37,20 @@ function App() {
       }
     }
   };
+  // const checkCookies = () => {
+  //   if (!checkForCookies()) {
+  //     return (
+  //       <Route>
+  //         <Redirect
+  //           to={{
+  //             pathname: "/error_page/?error=missing params",
+  //           }}
+  //         />
+  //       </Route>
+  //     );
+  //   }
+  // };
+
   return (
     <div className="App">
       <Router>
@@ -43,7 +65,7 @@ function App() {
             {checkForParams()}
             <div className="main_component fullscreen">
               <Suspense fallback={<div>Loading...</div>}>
-                <Home />
+                <Home params={query} />
               </Suspense>
             </div>
           </Route>

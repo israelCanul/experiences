@@ -1,0 +1,86 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  color: $grayTextRR;
+  font-family: $monse;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  &.active {
+    height: 100%;
+  }
+  &_background {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  &_contenido {
+    z-index: 1;
+    margin: auto;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    @include tablet {
+      width: 500px;
+    }
+    @include desktop {
+      width: 700px;
+    }
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    h3 {
+      color: black;
+      margin: 5px 0px 5px;
+    }
+  }
+  &_action {
+    position: relative;
+    width: 100%;
+    height: 32px;
+    padding: 5px 10px;
+  }
+  .close {
+    position: relative;
+    margin-left: calc(100% - 25px);
+    width: 25px;
+    height: 25px;
+    opacity: 0.5;
+    // background-color: red;
+  }
+  .close:hover {
+    opacity: 1;
+  }
+  .close:before,
+  .close:after {
+    position: absolute;
+    left: 12px;
+    content: " ";
+    height: 25px;
+    width: 2px;
+    background-color: #000;
+  }
+  .close:before {
+    transform: rotate(45deg);
+  }
+  .close:after {
+    transform: rotate(-45deg);
+  }
+}

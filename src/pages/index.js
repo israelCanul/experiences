@@ -1,7 +1,11 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import ExperiencesList from "../components/experiences_list";
 import Header from "../sections/header";
-const Home = () => {
+import { saveParams } from "../libs/cookieManager";
+const Home = ({ params }) => {
+  useEffect(() => {
+    saveParams(params);
+  }, [params]);
   return (
     <Fragment>
       <div className="home">
