@@ -36,16 +36,15 @@ export function deleteCookieForm(cname, idiom = null) {
   }
 }
 export function saveExperiencesSelected(params = []) {
-  setCookieForm("expS", params.join(), getLanguage());
+  setDataToLocalstorage("expS-" + getLanguage(), params);
   return true;
 }
 export function getExperiencesSelected() {
-  let expSelected = getCookieForm("expS", getLanguage());
-  expSelected = expSelected.split(",");
+  let expSelected = getDataFromLocalstorage("expS-" + getLanguage());
   if (expSelected.length > 0 || expSelected) return expSelected;
   else return [];
 }
-export function saveParams(params = []) {
+export function saveParams(params = {}) {
   Object.keys(params).map((id) => {
     setCookieForm(id, params[id], getLanguage());
     return true;
@@ -57,10 +56,22 @@ export function checkForCookies(params = []) {
     getCookieForm("resort", getLanguage()) &&
     getCookieForm("checkInDate", getLanguage()) &&
     getCookieForm("stayID", getLanguage()) &&
-    getCookieForm("peopleID", getLanguage())
+    getCookieForm("peopleID", getLanguage()) &&
+    getExperiencesSelected().length > 0
   ) {
     return true;
   } else {
     return false;
+  }
+}
+
+export function setDataToLocalstorage(name, params = {}) {
+  localStorage.setItem(name, window.btoa(JSON.stringify(params)));
+}
+export function getDataFromLocalstorage(name) {
+  if (localStorage.getItem(name)) {
+    return JSON.parse(window.atob(localStorage.getItem(name)));
+  } else {
+    return [];
   }
 }

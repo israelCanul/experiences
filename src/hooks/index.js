@@ -1,6 +1,7 @@
 import { getExperiences, getTours, getWheater } from "../api/index";
 import moment from "moment";
 import { getAllParamsFromUrl } from "../libs/helpers";
+import { setDataToLocalstorage } from "../libs/cookieManager";
 import { useState, useEffect } from "react";
 export function useExperiences() {
   const [experiences, setExperiences] = useState(null);
@@ -9,7 +10,6 @@ export function useExperiences() {
     if (experiences == null) {
       getExperiences().then((res) => {
         if (cancel) return;
-        console.log(res);
         let experiences = [];
         res.data.results.map((exp) => {
           let temp = {
@@ -23,6 +23,7 @@ export function useExperiences() {
           experiences.push(temp);
           return true;
         });
+        //setDataToLocalstorage("experiences", experiences);
         setExperiences(experiences);
       });
       return () => {
@@ -47,7 +48,6 @@ export function useTours() {
     if (tours == null) {
       getTours().then((res) => {
         if (cancel) return;
-        //console.log(res.data.results);
         setTours(res.data.results);
       });
       return () => {

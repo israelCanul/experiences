@@ -13,10 +13,9 @@ const ExperiencesList = () => {
   useEffect(() => {
     let idExperiences = [];
     selecteds.map((select) => {
-      idExperiences.push(select.id);
+      idExperiences.push(select);
       return true;
     });
-    console.log("experience selected", selecteds, idExperiences);
     saveExperiencesSelected(idExperiences);
   }, [selecteds]);
   let addExperience = (experience) => {

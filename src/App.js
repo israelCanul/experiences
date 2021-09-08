@@ -18,7 +18,7 @@ function App() {
   const checkForParams = () => {
     if (query != null) {
       if (
-        !query.peopleID &&
+        !query.contactID &&
         !query.peopleID &&
         !query.stayID &&
         !query.resID &&

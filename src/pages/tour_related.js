@@ -24,17 +24,18 @@ const TourList = () => {
     history.goBack();
   };
   const experiencesSelected = getExperiencesSelected();
+
   if (experiencesSelected.length >= 1 && tours) {
     let resortSelected = getCookieForm("resort", getLanguage());
     //tour filtred before adding to tourlist Item
     const renderExp = experiencesSelected.map((experience) => {
       let toursByExperience = [];
-      let title = "ss";
+      let title = experience.name;
       let icon = "/temporal/img/icon_yatch.png";
       tours.map((tour) => {
         //validamos que el tour sea uno de los correspondientes al converterClass y al asignados al resort
         if (
-          parseInt(tour.ConverterClassID) === parseInt(experience) &&
+          parseInt(tour.ConverterClassID) === parseInt(experience.id) &&
           tour.ConverterProperty === resortSelected
         ) {
           //agregamos el tour listo para anexar a la lista
@@ -45,13 +46,14 @@ const TourList = () => {
       if (toursByExperience.length > 0) {
         return (
           <ToursList
-            key={experience}
+            key={experience.id}
             title={title}
             icon={icon}
             data={toursByExperience}
           />
         );
       }
+      return "";
     });
     return (
       <div className="tourlist">
