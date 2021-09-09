@@ -1,4 +1,9 @@
-import { getExperiences, getTours, getWheater } from "../api/index";
+import {
+  getExperiences,
+  getTours,
+  getWheater,
+  getTourSelected,
+} from "../api/index";
 import moment from "moment";
 import { getAllParamsFromUrl } from "../libs/helpers";
 import { setDataToLocalstorage } from "../libs/cookieManager";
@@ -57,6 +62,36 @@ export function useTours() {
   });
   return tours;
 }
+
+export function useTourSelected(id) {
+  const [tour, setTour] = useState(null);
+  useEffect(() => {
+    let cancel = false;
+    if (tour == null && id != null) {
+      getTourSelected(id).then((res) => {
+        if (cancel) return;
+        if (res.data.results.length > 0) {
+          setTour({
+            ...res.data.results[0],
+            ConverterDesc: res.data.results[0].ConverterDescEng
+              ? res.data.results[0].ConverterDescEng
+              : res.data.results[0].ConverterDescSpa,
+            ConverterIncludes: res.data.results[0].ConverterIncludesEng
+              ? res.data.results[0].ConverterIncludesEng
+              : res.data.results[0].ConverterIncludesSpa,
+          });
+        } else {
+          setTour(false);
+        }
+      });
+      return () => {
+        cancel = true;
+      };
+    }
+  });
+  return tour;
+}
+
 export function useWheater() {
   const [wheater, setWheater] = useState(null);
   useEffect(() => {

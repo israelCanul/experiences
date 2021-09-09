@@ -18,11 +18,11 @@ function App() {
   const checkForParams = () => {
     if (query != null) {
       if (
-        !query.contactID &&
-        !query.peopleID &&
-        !query.stayID &&
-        !query.resID &&
-        !query.checkInDate &&
+        !query.contactID ||
+        !query.peopleID ||
+        !query.stayID ||
+        !query.resID ||
+        !query.checkInDate ||
         !query.resort
       ) {
         return (

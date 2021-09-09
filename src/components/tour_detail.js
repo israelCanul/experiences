@@ -1,47 +1,118 @@
 import Gallery from "./gallery";
-const TourDetail = () => {
-  return (
-    <div className="detail">
-      <div className="gallery">
-        <Gallery
-          imagenes={[
-            "/temporal/img/rocks_2.png",
-            "/temporal/img/rocks_3.png",
-            "/temporal/img/rocks.png",
-            "/temporal/img/rocks_2.png",
-          ]}
-        />
+import { Fragment } from "react";
+const TourDetail = ({ data = null }) => {
+  let includes = "";
+  if (data != null) {
+    includes = data.ConverterIncludes.split(",");
+    includes = includes.map((incl, id) => {
+      return (
+        <Fragment key={id}>
+          • {incl}
+          <br />
+        </Fragment>
+      );
+    });
+
+    return (
+      <div className="detail">
+        <div className="gallery">
+          <Gallery
+            imagenes={
+              data.ConverterCarrouselImage != ""
+                ? data.ConverterCarrouselImage.split(",")
+                : [
+                    "/temporal/img/rocks_2.png",
+                    "/temporal/img/rocks_3.png",
+                    "/temporal/img/rocks_2.png",
+                    "/temporal/img/rocks_3.png",
+                  ]
+            }
+          />
+        </div>
+        <div className="includes">
+          <h4>Includes</h4>
+          <p>{includes}</p>
+        </div>
+        <div className="total">
+          <ul>
+            <li>
+              <div className="description">{data.ConverterDesc}</div>
+              <div className="price">${data.ConverterRegularPrice} USD</div>
+            </li>
+            <li>
+              <div className="description">
+                {/* Exclusive Limited Time Discount to Mr. **LAST NAME* */}
+                Exclusive Limited Time Discount
+              </div>
+              <div className="price">
+                -$
+                {parseInt(
+                  parseFloat(data.ConverterRegularPrice).toFixed(2) -
+                    parseFloat(data.ConverterSpecialPrice).toFixed(2)
+                )}{" "}
+                USD
+              </div>
+            </li>
+            <li>
+              <div className="description">Special Price</div>
+              <div className="price totalPrice">
+                ${data.ConverterSpecialPrice} USD
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div className="includes">
-        <h4>Includes</h4>
-        <p>
-          • Deluxe motor coach <br />
-          • Professional bilingual guide <br />
-          • Continental breakfast and refreshments on board (beer, soda or
-          water) <br />
-          • Fresh water while touring the site. <br />• Buffet lunch in a
-          beautiful hacienda-style hotel.
-        </p>
-      </div>
-      <div className="total">
-        <ul>
-          <li>
-            <div className="description">Chichen Itzá Unique</div>
-            <div className="price">$190 USD</div>
-          </li>
-          <li>
-            <div className="description">
-              Exclusive Limited Time Discount to Mr. **LAST NAME*
+    );
+  } else {
+    return (
+      <div className="detail skeleton">
+        <div className="gallery">
+          <div class="wrapper_gallery">
+            <div className="thumbnails">
+              <div className="thumbnail">
+                <div className="section">
+                  <div className="info" style={{ minHeight: "50px" }}></div>
+                </div>
+              </div>
+              <div className="thumbnail">
+                <div className="section">
+                  <div className="info" style={{ minHeight: "50px" }}></div>
+                </div>
+              </div>
+              <div className="thumbnail">
+                <div className="section">
+                  <div className="info" style={{ minHeight: "50px" }}></div>
+                </div>
+              </div>
+              <div className="thumbnail">
+                <div className="section">
+                  <div className="info" style={{ minHeight: "50px" }}></div>
+                </div>
+              </div>
             </div>
-            <div className="price">-$50 USD</div>
-          </li>
-          <li>
-            <div className="description">Special Price</div>
-            <div className="price totalPrice">$140 USD</div>
-          </li>
-        </ul>
+            <div className="viewer">
+              <div className="section">
+                <div className="info"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="includes">
+          <h4>Includes</h4>
+          <div className="section">
+            <div className="info"></div>
+          </div>
+        </div>
+        <div className="total">
+          <div
+            className="section"
+            style={{ maxWidth: "600px", margin: "0 auto" }}
+          >
+            <div className="info"></div>
+          </div>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 export default TourDetail;
