@@ -46,10 +46,10 @@ const TourDetail = ({ data = null }) => {
               </div>
               <div className="price">
                 -$
-                {parseInt(
+                {parseFloat(
                   parseFloat(data.ConverterRegularPrice).toFixed(2) -
                     parseFloat(data.ConverterSpecialPrice).toFixed(2)
-                )}{" "}
+                ).toFixed(2)}{" "}
                 USD
               </div>
             </li>

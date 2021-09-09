@@ -47,6 +47,7 @@ export function saveParams(params = {}) {
 }
 export function checkForCookies(params = []) {
   if (
+    getCookieForm("contactID", getLanguage()) &&
     getCookieForm("resID", getLanguage()) &&
     getCookieForm("resort", getLanguage()) &&
     getCookieForm("checkInDate", getLanguage()) &&

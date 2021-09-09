@@ -1,55 +1,73 @@
 import axios from "axios";
-import { apiUrl, apiUrlSF, apiWheater, apiWheaterC } from "../libs/config";
+import {
+  apiUrl,
+  apiUrlSF,
+  apiWheater,
+  apiWheaterC,
+  dtConverterClass,
+  dtConverterTransaction,
+  dtConverter,
+} from "../libs/config";
 import { getLanguage } from "../libs/language";
 
 export function getExperiences() {
   if (getLanguage() === "en-US")
     return axios.get(
       apiUrlSF +
-        "/dtExtensions/FCE9536B-5642-460C-8DA0-5229762ECF26?fields=ConverterClassCode,ConverterClassID,ConverterClassImage,ConverterClassIcon,ConverterClassSeq,ConverterClassDescEng"
+        `/dtExtensions/${dtConverterClass}?fields=ConverterClassCode,ConverterClassID,ConverterClassImage,ConverterClassIcon,ConverterClassSeq,ConverterClassDescEng`
     );
   if (getLanguage() === "es-MX")
     return axios.get(
       apiUrlSF +
-        "/dtExtensions/FCE9536B-5642-460C-8DA0-5229762ECF26?fields=ConverterClassCode,ConverterClassID,ConverterClassImage,ConverterClassIcon,ConverterClassSeq,ConverterClassDescSpa"
+        `/dtExtensions/${dtConverterClass}?fields=ConverterClassCode,ConverterClassID,ConverterClassImage,ConverterClassIcon,ConverterClassSeq,ConverterClassDescSpa`
     );
 }
-export function getConverters() {
-  if (getLanguage() === "en-US")
-    return axios.get(
-      apiUrlSF +
-        "/dtExtensions/9B63AB77-2647-4054-BABD-76E631650032?fields=ConverterID,ConverterCode,ConverterDescEng,ConverterDescSpa,ConverterProperty,ConverterClassID,ConverterImage,ConverterRegularPrice,ConverterSpecialPrice,ConverterSeq,ConverterCarrouselImage,ConverterIncludesEng,ConverterIncludesSpa,ItemRegularLInk,ItemRegularImage"
-    );
-  if (getLanguage() === "es-MX")
-    return axios.get(
-      apiUrlSF +
-        "/dtExtensions/9B63AB77-2647-4054-BABD-76E631650032?fields=ConverterID,ConverterCode,ConverterDescEng,ConverterDescSpa,ConverterProperty,ConverterClassID,ConverterImage,ConverterRegularPrice,ConverterSpecialPrice,ConverterSeq,ConverterCarrouselImage,ConverterIncludesEng,ConverterIncludesSpa,ItemRegularLInk,ItemRegularImage"
-    );
-}
+
 export function getTours() {
   if (getLanguage() === "en-US")
     return axios.get(
       apiUrlSF +
-        "/dtExtensions/9B63AB77-2647-4054-BABD-76E631650032?fields=ConverterID,ConverterCode,ConverterDescEng,ConverterDescSpa,ConverterProperty,ConverterClassID,ConverterImage,ConverterRegularPrice,ConverterSpecialPrice,ConverterSeq,ConverterCarrouselImage,ConverterIncludesEng,ConverterIncludesSpa,ItemRegularLInk,ItemRegularImage"
+        `/dtExtensions/${dtConverter}?fields=ConverterID,ConverterCode,ConverterDescEng,ConverterDescSpa,ConverterProperty,ConverterClassID,ConverterImage,ConverterRegularPrice,ConverterSpecialPrice,ConverterSeq,ConverterCarrouselImage,ConverterIncludesEng,ConverterIncludesSpa,ItemRegularLInk,ItemRegularImage`
     );
   if (getLanguage() === "es-MX")
     return axios.get(
       apiUrlSF +
-        "/dtExtensions/9B63AB77-2647-4054-BABD-76E631650032?fields=ConverterID,ConverterCode,ConverterDescEng,ConverterDescSpa,ConverterProperty,ConverterClassID,ConverterImage,ConverterRegularPrice,ConverterSpecialPrice,ConverterSeq,ConverterCarrouselImage,ConverterIncludesEng,ConverterIncludesSpa,ItemRegularLInk,ItemRegularImage"
+        `/dtExtensions/${dtConverter}?fields=ConverterID,ConverterCode,ConverterDescEng,ConverterDescSpa,ConverterProperty,ConverterClassID,ConverterImage,ConverterRegularPrice,ConverterSpecialPrice,ConverterSeq,ConverterCarrouselImage,ConverterIncludesEng,ConverterIncludesSpa,ItemRegularLInk,ItemRegularImage`
     );
 }
+
+export function setDataToMC(params) {
+  if (getLanguage() === "en-US")
+    return axios({
+      method: "post",
+      url: apiUrlSF + `/dtExtensions/${dtConverterTransaction}`,
+      data: params,
+      headers: {
+        "Content-Type": "application/json;charset=UTF-8",
+      },
+    });
+
+  if (getLanguage() === "es-MX")
+    return axios({
+      method: "post",
+      url: apiUrlSF + `/dtExtensions/${dtConverterTransaction}`,
+      data: params,
+      headers: {
+        "Content-Type": "application/json;charset=UTF-8",
+      },
+    });
+}
+
 export function getTourSelected(id) {
   if (getLanguage() === "en-US")
     return axios.get(
       apiUrlSF +
-        "/dtExtensions/9B63AB77-2647-4054-BABD-76E631650032?fields=ConverterCarrouselImage,ConverterCode,ConverterDescEng,ConverterRegularPrice,ConverterSpecialPrice,ConverterIncludesEng,ItemRegularLInk,ItemRegularImage&q=ConverterID,equals," +
-        id
+        `/dtExtensions/${dtConverter}?fields=ConverterCarrouselImage,ConverterCode,ConverterDescEng,ConverterRegularPrice,ConverterSpecialPrice,ConverterIncludesEng,ItemRegularLInk,ItemRegularImage&q=ConverterID,equals,${id}`
     );
   if (getLanguage() === "es-MX")
     return axios.get(
       apiUrlSF +
-        "/dtExtensions/9B63AB77-2647-4054-BABD-76E631650032?fields=ConverterCarrouselImage,ConverterCode,ConverterDescSpa,ConverterRegularPrice,ConverterSpecialPrice,ConverterIncludesSpa,ItemRegularLInk,ItemRegularImage&q=ConverterID,equals," +
-        id
+        `/dtExtensions/${dtConverter}?fields=ConverterCarrouselImage,ConverterCode,ConverterDescSpa,ConverterRegularPrice,ConverterSpecialPrice,ConverterIncludesSpa,ItemRegularLInk,ItemRegularImage&q=ConverterID,equals,${id}`
     );
 }
 

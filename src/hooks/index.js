@@ -3,11 +3,20 @@ import {
   getTours,
   getWheater,
   getTourSelected,
+  setDataToMC,
 } from "../api/index";
 import moment from "moment";
 import { getAllParamsFromUrl } from "../libs/helpers";
-import { setDataToLocalstorage } from "../libs/cookieManager";
 import { useState, useEffect } from "react";
+export function setDataMC(params = {}, callback = () => {}) {
+  setDataToMC(params).then((res) => {
+    console.log(res);
+    if (parseInt(res.data.errorCode) >= 0) {
+      callback();
+    }
+  });
+}
+
 export function useExperiences() {
   const [experiences, setExperiences] = useState(null);
   useEffect(() => {
@@ -28,7 +37,6 @@ export function useExperiences() {
           experiences.push(temp);
           return true;
         });
-        //setDataToLocalstorage("experiences", experiences);
         setExperiences(experiences);
       });
       return () => {

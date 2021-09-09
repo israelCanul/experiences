@@ -21,7 +21,7 @@ const Summary = () => {
     history.push("/error_page/?error=missing params on tour summary");
   }
   let tourSelected = useTourSelected(getCookieForm("serviceID", getLanguage()));
-  if (tourSelected != null && tourSelected != false) {
+  if (tourSelected !== null && tourSelected !== false) {
     console.log(tourSelected);
     let tourS = tourSelected;
     return (

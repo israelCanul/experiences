@@ -14,3 +14,18 @@ export const apiWheaterC =
 
 export const folderIconsWeather =
   "https://www.royalresorts.com/experiences/img/";
+
+export const dtConverterClass =
+  process.env.NODE_ENV !== "production"
+    ? "FCE9536B-5642-460C-8DA0-5229762ECF26"
+    : "FCE9536B-5642-460C-8DA0-5229762ECF26";
+
+export const dtConverterTransaction =
+  process.env.NODE_ENV !== "production"
+    ? "1F1DEC7F-4731-40E3-9644-7CAC7EE8FF03"
+    : "1F1DEC7F-4731-40E3-9644-7CAC7EE8FF03";
+
+export const dtConverter =
+  process.env.NODE_ENV !== "production"
+    ? "9B63AB77-2647-4054-BABD-76E631650032"
+    : "9B63AB77-2647-4054-BABD-76E631650032";
