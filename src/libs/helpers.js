@@ -8,3 +8,57 @@ export function getAllParamsFromUrl() {
   var searchParams = new URLSearchParams(search);
   return Object.fromEntries(searchParams.entries());
 }
+
+export function makeID(params = []) {
+  let identifier = "";
+  params.map((param) => {
+    if (typeof param === "number") {
+      identifier += param.toString();
+    }
+    return true;
+  });
+  return parseInt(identifier);
+}
+
+export function formatingDateToCRM(date) {
+  if (date !== "") {
+    //11-08-2021
+    //2019-11-24
+    let dateFormated = date.split("-");
+    dateFormated = `${dateFormated[2]}-${dateFormated[0]}-${dateFormated[1]}`;
+    return dateFormated;
+  } else {
+    return null;
+  }
+}
+export function formatingDateFromCRM(date) {
+  if (date !== "") {
+    //11-08-2021
+    //2019-11-24
+    let dateFormated = date.split("-");
+    dateFormated = `${dateFormated[1]}-${dateFormated[2]}-${dateFormated[0]}`;
+    return dateFormated;
+  } else {
+    return null;
+  }
+}
+
+export function getDateInString(date) {
+  return `${date.getMonth() < 10 ? "0" + date.getMonth() : date.getMonth()}-${
+    date.getDay() < 10 ? "0" + date.getDay() : date.getDay()
+  }-${date.getFullYear()}`;
+}
+export function getTimeInString(date) {
+  let tDate = new Date(date);
+  tDate.setUTCHours(date.getHours());
+  tDate.setUTCMinutes(date.getMinutes());
+  // let dateFormated = `${
+  //   date.getUTCMonth() < 10
+  //     ? "0" + (date.getUTCMonth() + 1)
+  //     : date.getUTCMonth() + 1
+  // }-${
+  //   date.getUTCDate() < 10 ? "0" + date.getUTCDate() : date.getUTCDate()
+  // }-${date.getFullYear()}`;
+  // console.log(dateFormated);
+  return tDate.toISOString().split("T");
+}

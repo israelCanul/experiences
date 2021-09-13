@@ -3,31 +3,39 @@ import { getTexto, getLanguage } from "../libs/language";
 import { saveParams, getCookieForm } from "../libs/cookieManager";
 import { useHistory } from "react-router-dom";
 import { setDataMC } from "../hooks";
-import { parseJSON } from "date-fns";
+import { makeID } from "../libs/helpers";
+import Loading from "./loader/loading";
+import { useState } from "react";
+
 const TourOnList = ({ data }) => {
   let history = useHistory();
+  const [selected, setSelected] = useState(false);
+  const [error, setError] = useState("");
+
   const selectItem = (e) => {
     e.preventDefault();
-
-    //formato date 2017-09-15
-
+    setSelected(true);
     let params = {
-      ConverterTrxID:
-        getCookieForm("stayID", getLanguage()) +
-        Math.floor(Math.random() * 100 + 1),
       ContactID: getCookieForm("contactID", getLanguage()),
       PeopleID: getCookieForm("peopleID", getLanguage()),
       StayID: getCookieForm("stayID", getLanguage()),
       ResID: getCookieForm("resID", getLanguage()),
       CheckInDate: getCookieForm("checkInDate", getLanguage()),
+      CheckOutDate: getCookieForm("checkOutDate", getLanguage()),
       Resort: getCookieForm("resort", getLanguage()),
       ConverterID: data.ConverterID,
     };
-
-    setDataMC(params, () => {
-      saveParams({ serviceID: data.ConverterID });
-      history.push("/tour_summary");
-    });
+    setDataMC(
+      params,
+      () => {
+        setSelected(false);
+        saveParams({ serviceID: data.ConverterID });
+        history.push("/tour_summary");
+      },
+      (err) => {
+        setError(err);
+      }
+    );
   };
 
   return (
@@ -56,9 +64,14 @@ const TourOnList = ({ data }) => {
           </div>
         </div>
       </div>
-      <a href="/" onClick={selectItem.bind(this)} className="select">
-        {getTexto("Select Experience")}
-      </a>
+      {error !== "" ? <div className="error">{error}</div> : ""}
+      {selected === true ? (
+        <Loading />
+      ) : (
+        <a href="/" onClick={selectItem.bind(this)} className="select">
+          {getTexto("Select Experience")}
+        </a>
+      )}
     </div>
   );
 };

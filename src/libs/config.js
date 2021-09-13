@@ -22,8 +22,8 @@ export const dtConverterClass =
 
 export const dtConverterTransaction =
   process.env.NODE_ENV !== "production"
-    ? "1F1DEC7F-4731-40E3-9644-7CAC7EE8FF03"
-    : "1F1DEC7F-4731-40E3-9644-7CAC7EE8FF03";
+    ? "54EEEFCA-359F-46D1-9995-B5C2550C119F"
+    : "54EEEFCA-359F-46D1-9995-B5C2550C119F";
 
 export const dtConverter =
   process.env.NODE_ENV !== "production"

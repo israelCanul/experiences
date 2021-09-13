@@ -11,7 +11,9 @@ const Collapser = ({
   const [isActive, setIsActive] = useState(active);
   const [section, setSection] = useState(Section);
   useEffect(() => {
-    if (active) setIsActive(active);
+    setTimeout(() => {
+      if (active === true) setIsActive(active);
+    }, 200);
     if (isActive) {
       setTimeout(() => {
         section.scrollIntoView({ behavior: "smooth" });

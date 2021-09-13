@@ -57,6 +57,25 @@ export function setDataToMC(params) {
       },
     });
 }
+//CRM/getWaves
+///getTokenByServer
+export async function getWavesFromCRM(params) {
+  const token = await axios
+    .post(apiUrlSF + `/CRM/getTokenByServer`)
+    .then((responseT) => {
+      return axios({
+        method: "post",
+        url: apiUrlSF + `/CRM/getWaves`,
+        data: params,
+        headers: {
+          "Content-Type": "application/json;charset=UTF-8",
+          Authorization: `Bearer ${responseT.data.token.access_token}`,
+        },
+      });
+    });
+
+  return token;
+}
 
 export function getTourSelected(id) {
   if (getLanguage() === "en-US")

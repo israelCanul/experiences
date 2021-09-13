@@ -36,6 +36,18 @@
           width: 33.33%;
           max-width: 33.33%;
         }
+        .error {
+          padding: 10px 5px;
+          min-height: 100px;
+          background: rgba($blueRR, 0.3);
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-family: "Montserrat";
+          font-weight: bold;
+        }
+
         .info {
           flex: 1;
           width: 100%;

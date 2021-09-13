@@ -7,11 +7,13 @@ import {
 } from "react-router-dom";
 import React, { Suspense } from "react";
 import { useQuery } from "./hooks";
-
+import { createBrowserHistory } from "history";
 const Home = React.lazy(() => import("./pages/index"));
 const TourRelated = React.lazy(() => import("./pages/tour_related"));
 const Summary = React.lazy(() => import("./pages/summary"));
 const Confirmation = React.lazy(() => import("./pages/confirmation"));
+
+const history = createBrowserHistory();
 
 function App() {
   let query = useQuery();
@@ -53,7 +55,7 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
+      <Router history={history}>
         <Switch>
           <Route path={"/error_page"}>
             <div className="main_component">

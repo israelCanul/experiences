@@ -8,13 +8,24 @@ import {
 import moment from "moment";
 import { getAllParamsFromUrl } from "../libs/helpers";
 import { useState, useEffect } from "react";
-export function setDataMC(params = {}, callback = () => {}) {
-  setDataToMC(params).then((res) => {
-    console.log(res);
-    if (parseInt(res.data.errorCode) >= 0) {
-      callback();
-    }
-  });
+import { getCookieForm } from "../libs/cookieManager";
+import { getLanguage } from "../libs/language";
+export function setDataMC(
+  params = {},
+  callback = () => {},
+  callbackF = () => {}
+) {
+  setDataToMC(params)
+    .then((res) => {
+      if (parseInt(res.data.errorCode) >= 0) {
+        callback();
+      } else {
+        callbackF(res.data.response);
+      }
+    })
+    .catch((err) => {
+      callbackF(err);
+    });
 }
 
 export function useExperiences() {
@@ -71,11 +82,13 @@ export function useTours() {
   return tours;
 }
 
-export function useTourSelected(id) {
+export function useTourSelected(
+  id = getCookieForm("serviceID", getLanguage())
+) {
   const [tour, setTour] = useState(null);
   useEffect(() => {
     let cancel = false;
-    if (tour == null && id != null) {
+    if (tour === null && id !== null && id !== "") {
       getTourSelected(id).then((res) => {
         if (cancel) return;
         if (res.data.results.length > 0) {
@@ -162,3 +175,32 @@ function getListFromWeather(res) {
   }
   return weatherDaysList;
 }
+
+// function useWaves() {
+//   const [waves, setWaves] = useState(null);
+//   useEffect(() => {
+//     let cancel = false;
+//     if (waves == null) {
+//       getWaves("f").then((response) => {
+//         let res = response.data;
+//         let city = res.city.name + ", " + res.city.country;
+//         // setwaves({ city: city, listF: getListFromWeather(res) });
+
+//         getWaves().then((responseC) => {
+//           let resC = responseC.data;
+//           setWaves({
+//             city: city,
+//             listF: getListFromWeather(res),
+//             listC: getListFromWeather(resC),
+//           });
+//         });
+
+//         if (cancel) return;
+//       });
+//       return () => {
+//         cancel = true;
+//       };
+//     }
+//   });
+//   return waves;
+// }

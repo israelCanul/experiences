@@ -67,7 +67,7 @@ const TourDetail = ({ data = null }) => {
     return (
       <div className="detail skeleton">
         <div className="gallery">
-          <div class="wrapper_gallery">
+          <div className="wrapper_gallery">
             <div className="thumbnails">
               <div className="thumbnail">
                 <div className="section">
