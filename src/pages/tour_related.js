@@ -14,6 +14,9 @@ import {
 const TourList = () => {
   const tours = useTours();
   let history = useHistory();
+  //cambio de title
+  let document = Document;
+  document.title = "Tours";
 
   if (!checkForCookies()) {
     //checamos que existan las cookies de info

@@ -33,10 +33,25 @@ export function formatingDateToCRM(date) {
 }
 export function formatingDateFromCRM(date) {
   if (date !== "") {
-    //11-08-2021
-    //2019-11-24
     let dateFormated = date.split("-");
     dateFormated = `${dateFormated[1]}-${dateFormated[2]}-${dateFormated[0]}`;
+    return dateFormated;
+  } else {
+    return null;
+  }
+}
+export function formatingDateFromMC(date) {
+  if (date !== "") {
+    let dateFormated = date.split(" ");
+    dateFormated = dateFormated[0].split("/");
+    console.log(dateFormated);
+    dateFormated =
+      (dateFormated[0].length > 1 ? dateFormated[0] : "0" + dateFormated[0]) +
+      "-" +
+      (dateFormated[1].length > 1 ? dateFormated[1] : "0" + dateFormated[1]) +
+      "-" +
+      (dateFormated[2].length > 1 ? dateFormated[2] : "0" + dateFormated[2]);
+    console.log(dateFormated);
     return dateFormated;
   } else {
     return null;
@@ -52,13 +67,5 @@ export function getTimeInString(date) {
   let tDate = new Date(date);
   tDate.setUTCHours(date.getHours());
   tDate.setUTCMinutes(date.getMinutes());
-  // let dateFormated = `${
-  //   date.getUTCMonth() < 10
-  //     ? "0" + (date.getUTCMonth() + 1)
-  //     : date.getUTCMonth() + 1
-  // }-${
-  //   date.getUTCDate() < 10 ? "0" + date.getUTCDate() : date.getUTCDate()
-  // }-${date.getFullYear()}`;
-  // console.log(dateFormated);
   return tDate.toISOString().split("T");
 }

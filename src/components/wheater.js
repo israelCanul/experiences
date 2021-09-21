@@ -5,7 +5,6 @@ const Weather = ({ daysF = [], daysC = [], city = "" }) => {
   const [selected, setSelected] = useState(0);
   let img = null;
   if (daysF.length > 0 && daysC.length > 0) {
-    console.log(daysF[selected]);
     img = (
       <div className="temperatura">
         <img

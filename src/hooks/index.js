@@ -4,11 +4,12 @@ import {
   getWheater,
   getTourSelected,
   setDataToMC,
+  getParamsToContinue,
 } from "../api/index";
 import moment from "moment";
-import { getAllParamsFromUrl } from "../libs/helpers";
+import { getAllParamsFromUrl, formatingDateFromMC } from "../libs/helpers";
 import { useState, useEffect } from "react";
-import { getCookieForm } from "../libs/cookieManager";
+import { getCookieForm, saveParams } from "../libs/cookieManager";
 import { getLanguage } from "../libs/language";
 export function setDataMC(
   params = {},
@@ -27,29 +28,64 @@ export function setDataMC(
       callbackF(err);
     });
 }
+export function useParamsContinue() {
+  const [data, setData] = useState(null);
+  let getParams = getAllParamsFromUrl();
+  useEffect(() => {
+    let cancel = false;
+    if (data == null && getParams.peopleID) {
+      getParamsToContinue(getParams.peopleID).then((res) => {
+        if (cancel) return;
 
+        res.data.results.map((result) => {
+          if (
+            getParams.contactID === result.ContactID &&
+            getParams.stayID === result.StayID
+          ) {
+            let paramsBack = {
+              checkInDate: formatingDateFromMC(result.CheckInDate),
+              checkOutDate: formatingDateFromMC(result.CheckOutDate),
+              resort: result.Resort,
+              serviceID: result.ConverterID,
+            };
+            saveParams(paramsBack);
+            setData(paramsBack);
+          }
+          return true;
+        });
+      });
+      return () => {
+        cancel = true;
+      };
+    }
+  }, [data]);
+  return data;
+}
 export function useExperiences() {
   const [experiences, setExperiences] = useState(null);
   useEffect(() => {
     let cancel = false;
     if (experiences == null) {
-      getExperiences().then((res) => {
-        if (cancel) return;
-        let experiences = [];
-        res.data.results.map((exp) => {
-          let temp = {
-            id: exp.ConverterClassID,
-            name: exp.ConverterClassDescEng
-              ? exp.ConverterClassDescEng
-              : exp.ConverterClassDescSpa,
-            icon: exp.ConverterClassIcon,
-            image: exp.ConverterClassImage,
-          };
-          experiences.push(temp);
-          return true;
-        });
-        setExperiences(experiences);
-      });
+      getExperiences().then(
+        (res) => {
+          if (cancel) return;
+          let experiences = [];
+          res.data.results.map((exp) => {
+            let temp = {
+              id: exp.ConverterClassID,
+              name: exp.ConverterClassDescEng
+                ? exp.ConverterClassDescEng
+                : exp.ConverterClassDescSpa,
+              icon: exp.ConverterClassIcon,
+              image: exp.ConverterClassImage,
+            };
+            experiences.push(temp);
+            return true;
+          });
+          setExperiences(experiences);
+        },
+        [experiences]
+      );
       return () => {
         cancel = true;
       };
@@ -85,11 +121,23 @@ export function useTours() {
 export function useTourSelected(
   id = getCookieForm("serviceID", getLanguage())
 ) {
-  const [tour, setTour] = useState(null);
+  const [tourSelected, setTour] = useState(null);
+  const [refresh, setRefresh] = useState(null);
+  let idTemp = id;
+  const parametros = getAllParamsFromUrl();
+  if (
+    idTemp !== "" &&
+    parametros.contactID &&
+    parametros.peopleID &&
+    parametros.stayID &&
+    refresh === null
+  ) {
+    idTemp = null;
+  }
   useEffect(() => {
     let cancel = false;
-    if (tour === null && id !== null && id !== "") {
-      getTourSelected(id).then((res) => {
+    if (tourSelected === null && idTemp !== null && idTemp !== "") {
+      getTourSelected(idTemp).then((res) => {
         if (cancel) return;
         if (res.data.results.length > 0) {
           setTour({
@@ -109,8 +157,8 @@ export function useTourSelected(
         cancel = true;
       };
     }
-  });
-  return tour;
+  }, [refresh]);
+  return [tourSelected, setRefresh];
 }
 
 export function useWheater() {
@@ -155,6 +203,8 @@ function getListFromWeather(res) {
           dateToCompare.format("YYYY-MM-DD")
         ) {
           return o;
+        } else {
+          return null;
         }
       });
     } else {
@@ -165,42 +215,14 @@ function getListFromWeather(res) {
           dateToCompare.format("YYYY-MM-DD, hA")
         ) {
           return o;
+        } else {
+          return null;
         }
       });
     }
     if (result !== undefined) {
       weatherDaysList.push({ w: result, m: dateToCompare });
     }
-    // console.log(weatherDaysList);
   }
   return weatherDaysList;
 }
-
-// function useWaves() {
-//   const [waves, setWaves] = useState(null);
-//   useEffect(() => {
-//     let cancel = false;
-//     if (waves == null) {
-//       getWaves("f").then((response) => {
-//         let res = response.data;
-//         let city = res.city.name + ", " + res.city.country;
-//         // setwaves({ city: city, listF: getListFromWeather(res) });
-
-//         getWaves().then((responseC) => {
-//           let resC = responseC.data;
-//           setWaves({
-//             city: city,
-//             listF: getListFromWeather(res),
-//             listC: getListFromWeather(resC),
-//           });
-//         });
-
-//         if (cancel) return;
-//       });
-//       return () => {
-//         cancel = true;
-//       };
-//     }
-//   });
-//   return waves;
-// }

@@ -3,7 +3,6 @@ import { getTexto, getLanguage } from "../libs/language";
 import { saveParams, getCookieForm } from "../libs/cookieManager";
 import { useHistory } from "react-router-dom";
 import { setDataMC } from "../hooks";
-import { makeID } from "../libs/helpers";
 import Loading from "./loader/loading";
 import { useState } from "react";
 

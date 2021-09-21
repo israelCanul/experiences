@@ -1,16 +1,12 @@
 import { useEffect, useState, forwardRef } from "react";
 import DatePicker from "react-datepicker";
-import { setMinutes, setHours, add, subDays } from "date-fns";
+import { add, subDays } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 import arrowdown from "../animations/arrow-down-thin.svg";
 import { Fragment } from "react";
 import { getCookieForm } from "../libs/cookieManager";
 import { getLanguage } from "../libs/language";
-import {
-  formatingDateFromCRM,
-  getTimeInString,
-  getDateInString,
-} from "../libs/helpers";
+import { formatingDateFromCRM, getTimeInString } from "../libs/helpers";
 
 const Book = ({ setBook = () => {}, waves = null }) => {
   const [bookdate, setBookDate] = useState(null);
@@ -41,6 +37,7 @@ const Book = ({ setBook = () => {}, waves = null }) => {
           //waveDate.setSeconds(temWave.getUTCSeconds());
           newTimesForDate.push(waveDate);
         }
+        return true;
       });
       setFilter(newTimesForDate);
       //console.log("olas", newTimesForDate);
@@ -64,9 +61,6 @@ const Book = ({ setBook = () => {}, waves = null }) => {
 
   useEffect(() => {
     if (bookdate !== null && booktime !== null) {
-      //console.log(bookdate);
-      // console.log(bookdate.getUTC);
-      // console.log(booktime);
       setBook({
         d: getTimeInString(bookdate)[0],
         t: getTimeInString(booktime)[1],

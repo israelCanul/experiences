@@ -1,4 +1,4 @@
-import Collapser from "./collapser";
+import Collapser from "./collapser/collapser";
 import RadioButton from "./radio_button";
 
 const ContinueSummary = ({ agree, setAgree }) => {

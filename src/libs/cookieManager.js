@@ -27,7 +27,6 @@ export function setCookieForm(cname, cvalue, idiom = null) {
 export function deleteCookieForm(cname, idiom = null) {
   var expires = "expires=Thu, 21 Aug 2014 20:00:00 UTC";
   if (idiom != null) cname = cname + "-" + idiom;
-  console.log(cname + "=;" + expires + ";path=/");
   document.cookie = cname + "=;" + expires + ";path=/";
 }
 export function saveExperiencesSelected(params = []) {

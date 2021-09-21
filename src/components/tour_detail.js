@@ -18,7 +18,7 @@ const TourDetail = ({ data = null }) => {
         <div className="gallery">
           <Gallery
             imagenes={
-              data.ConverterCarrouselImage != ""
+              data.ConverterCarrouselImage !== ""
                 ? data.ConverterCarrouselImage.split(",")
                 : [
                     "/temporal/img/rocks_2.png",

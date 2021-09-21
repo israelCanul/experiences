@@ -1,15 +1,18 @@
 .collapser {
-  opacity: 0;
+  opacity: 1;
   //   background-color: red;
-  padding: 5px;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
-}
-
-.active {
-  opacity: 1;
+  height: 0px;
+  // background: green;
+  padding: unset !important;
+  // margin: unset !important;
+  .content {
+    padding: 5px;
+    // background: red;
+  }
 }

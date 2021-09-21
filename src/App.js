@@ -1,13 +1,9 @@
 import "./scss/app.scss";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { Router, Switch, Route, Redirect } from "react-router-dom";
 import React, { Suspense } from "react";
 import { useQuery } from "./hooks";
 import { createBrowserHistory } from "history";
+import Page from "./pages/page.js";
 const Home = React.lazy(() => import("./pages/index"));
 const TourRelated = React.lazy(() => import("./pages/tour_related"));
 const Summary = React.lazy(() => import("./pages/summary"));
@@ -86,11 +82,13 @@ function App() {
             </div>
           </Route>
           <Route exact path={"/confirmation"}>
-            <div className="main_component fullscreen">
-              <Suspense fallback={<div>Loading...</div>}>
-                <Confirmation />
-              </Suspense>
-            </div>
+            <Page title="Confirmation">
+              <div className="main_component fullscreen">
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Confirmation />
+                </Suspense>
+              </div>
+            </Page>
           </Route>
           <Route component={NotFound} />
         </Switch>
@@ -112,7 +110,6 @@ const NotFound = () => {
 };
 const MissingParams = () => {
   let query = useQuery();
-  console.log(query);
   return (
     <div className="main_component">
       <div className="error_page">

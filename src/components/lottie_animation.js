@@ -1,7 +1,6 @@
 import Lottie from "react-lottie";
 
 const LottieAnim = ({ height = 80, width = 80, anim }) => {
-  console.log(anim);
   const defaultOptions = {
     loop: false,
     autoplay: true,

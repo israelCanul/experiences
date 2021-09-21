@@ -5,11 +5,20 @@ import TourDetail from "../components/tour_detail";
 import ContinueSummary from "../components/continue_summary";
 import AboutStay from "../components/about_your_stay";
 import BookApointment from "../components/book_appointment";
-import Collapser from "../components/collapser";
+import Collapser from "../components/collapser/collapser";
 import "../scss/tour_summary.scss";
 import { Redirect } from "react-router-dom";
-import { checkForCookies, getCookieForm } from "../libs/cookieManager";
-import { useTourSelected } from "../hooks";
+import {
+  checkForCookies,
+  getCookieForm,
+  saveParams,
+} from "../libs/cookieManager";
+import {
+  useTourSelected,
+  setDataMC,
+  useQuery,
+  useParamsContinue,
+} from "../hooks";
 import { getWavesFromCRM } from "../api";
 import { formatingDateToCRM } from "../libs/helpers";
 import Loading from "../components/loader/loading";
@@ -19,8 +28,23 @@ const Summary = () => {
   const [celebration, setCelebration] = useState("");
   const [book, setBook] = useState(null);
   const [waves, setWaves] = useState(null);
-  let tourSelected = useTourSelected();
-  // let history = useHistory();
+  const [loading, setloading] = useState(false);
+  const useGetParams = useParamsContinue(null); //este hook obtiene la info de MC siempre y cuando existan los parametros GET
+  const query = useQuery();
+  const [tourSelected, setRefresh] = useTourSelected();
+  useEffect(() => {
+    if (query !== null) {
+      //si hay parametros GET los almacenamos en las cookies correspondientes
+      saveParams(query);
+    }
+    if (useGetParams !== null) {
+      // si hay parametros obtenidos via api se solicita de nuevo el obtener el tour
+      if (useGetParams.serviceID) {
+        setRefresh(useGetParams.serviceID); // este medoto refresca el hook que modifica el tourSelected
+      }
+    }
+  }, [query, useGetParams, setRefresh]);
+  //obtenemos los appointments de acuerdo a la fecha seleccionada si el usario estuvo de acuerdo con los terminos y condiciones
   useEffect(() => {
     if (agree === true && waves === null) {
       const params = {
@@ -40,11 +64,50 @@ const Summary = () => {
     }
   }, [agree, waves]);
 
-  console.log(book);
+  // mandamos a guardar los parametros seleccionados por el usuario a la DT correspondiente
+  const saveSelection = (e) => {
+    e.preventDefault();
+    setloading(true);
+    const params = {
+      ynAcceptT_C: agree,
+      ContactID: getCookieForm("contactID", getLanguage()),
+      PeopleID: getCookieForm("peopleID", getLanguage()),
+      StayID: getCookieForm("stayID", getLanguage()),
+      AppointmentDate: agree ? book.d + " 00:00:00 AM" : "",
+      AppointmentTime: agree ? book.t : "",
+      Celebration: celebration,
+    };
+    setDataMC(
+      params,
+      () => {
+        //funcion callback pra cuando el guardado sea exitoso por parte de MC
+        setloading(false);
+        window.location = "/confirmation";
+      },
+      (err) => {
+        setloading(false);
+      }
+    );
+  };
+
+  //validamos si exiten cookies o parametros necesarios para continuar
   if (!checkForCookies() || !getCookieForm("serviceID", getLanguage())) {
+    if (query) {
+      if (!query.contactID || !query.peopleID || !query.stayID) {
+        return (
+          <Redirect to="/error_page/?error=missing params on tour summary" />
+        );
+      } else if (useGetParams !== null) {
+        if (useGetParams.length === 0) {
+          return (
+            <Redirect to="/error_page/?error=There are not any Data with the information passed" />
+          );
+        }
+      }
+    }
     //checamos que existan las cookies de info y servicio
-    return <Redirect to="/error_page/?error=missing params on tour summary" />;
   }
+
   if (tourSelected !== null && tourSelected !== "" && tourSelected !== false) {
     let tourS = tourSelected;
     return (
@@ -109,14 +172,19 @@ const Summary = () => {
             setCelebration={setCelebration}
           />
         </Collapser>
+
         <div className="actions active">
-          {agree !== null &&
+          {loading === false &&
+          agree !== null &&
           celebration !== "" &&
           ((agree && book !== null) || !agree) ? (
-            <a href="/">Continue</a>
+            <a onClick={saveSelection.bind(this)} href="/">
+              Continue
+            </a>
           ) : (
             ""
           )}
+          {loading === true ? <Loading /> : ""}
         </div>
       </div>
     );

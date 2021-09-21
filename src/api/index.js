@@ -1,6 +1,5 @@
 import axios from "axios";
 import {
-  apiUrl,
   apiUrlSF,
   apiWheater,
   apiWheaterC,
@@ -9,6 +8,13 @@ import {
   dtConverter,
 } from "../libs/config";
 import { getLanguage } from "../libs/language";
+
+export function getParamsToContinue(peopleID) {
+  return axios.get(
+    apiUrlSF +
+      `/dtExtensions/${dtConverterTransaction}?fields=StayID,ContactID,ConverterID,Resort,CheckInDate,CheckOutDate&q=PeopleID,equals,${peopleID}`
+  );
+}
 
 export function getExperiences() {
   if (getLanguage() === "en-US")

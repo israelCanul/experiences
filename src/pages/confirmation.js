@@ -8,6 +8,10 @@ import "../scss/confirmation.scss";
 import { useState } from "react";
 const Confirmation = () => {
   const [modalOpen, setModalOpen] = useState(true);
+
+  let document = Document;
+  document.title = "Confirmation";
+
   //agree/disagree to take the meeting
   const weather = useWheater();
   return (
@@ -35,7 +39,6 @@ const Confirmation = () => {
 };
 
 const Modal = ({ open = false, toggleModal = () => {} }) => {
-  console.log(open);
   return (
     <div className={`modal ${open === true ? "active" : "ss"}`}>
       <div className="modal_background"></div>
@@ -55,7 +58,7 @@ const Modal = ({ open = false, toggleModal = () => {} }) => {
             "Please read the details of your reservation found on your confirmation email"
           )}
           <br />
-          {`${getTexto("Email sent: ")} `}
+          {/* {`${getTexto("Email sent: ")} `} */}
           <br />
         </p>
         <p>{getTexto("We look forward to welcoming you soon")}!</p>
