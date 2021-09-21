@@ -1,4 +1,4 @@
-import Gallery from "./gallery";
+import Gallery from "./gallery/gallery";
 import { Fragment } from "react";
 const TourDetail = ({ data = null }) => {
   let includes = "";
