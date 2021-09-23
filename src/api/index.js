@@ -6,6 +6,7 @@ import {
   dtConverterClass,
   dtConverterTransaction,
   dtConverter,
+  dtAccountSalesforceSync,
 } from "../libs/config";
 import { getLanguage } from "../libs/language";
 
@@ -98,4 +99,23 @@ export function getTourSelected(id) {
 
 export function getWheater(m) {
   return m === "f" ? axios.get(apiWheater) : axios.get(apiWheaterC);
+}
+
+export function getInformationFromDEByPeopleID(id) {
+  return axios.get(
+    apiUrlSF +
+      `/dtExtensions/${dtAccountSalesforceSync}?fields=RRC_PeopleId__c,FirstName,Name,PersonEmail&q=RRC_PeopleId__c,equals,${id}`
+  );
+}
+
+export function sendEmailMessage(params) {
+  let getRandom = Math.floor(Math.random() * (1 - 100)) + 1;
+  let data = {
+    messageKey: `${params.RRC_PeopleId__c}${getRandom}`,
+    keyDefinition: "medios-custom-emails",
+    contactKey:
+      "Unique identifier for a subscriber in Marketing Cloud [Example] icanul@royalresorts.com",
+    to: "icanul@royalresorts.com",
+  };
+  return axios.post(apiUrlSF + `/emails/sendMessage`);
 }
