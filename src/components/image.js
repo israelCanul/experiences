@@ -7,10 +7,20 @@ const Imagen = ({
   width = null,
   height = null,
 }) => {
-  let name = src.split(".");
+  let name = src;
+  let nameOfImage = "";
+  if (name.search(".png")) {
+    nameOfImage = name.replace(".png", "");
+  }
+  if (name.search(".jpg")) {
+    nameOfImage = name.replace(".jpg", "");
+  }
+  // let name = src.split(".");
+
+  // let nameOfImage = name.pop().
   return (
     <picture height={height} width={width} className={className}>
-      <source srcSet={name[0] + ".webp"} type="image/webp"></source>
+      <source srcSet={nameOfImage + ".webp"} type="image/webp"></source>
       <img
         className="image"
         loading="lazy"

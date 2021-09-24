@@ -7,6 +7,7 @@ import {
   dtConverterTransaction,
   dtConverter,
   dtAccountSalesforceSync,
+  dtSpecialClients,
 } from "../libs/config";
 import { getLanguage } from "../libs/language";
 
@@ -109,13 +110,10 @@ export function getInformationFromDEByPeopleID(id) {
 }
 
 export function sendEmailMessage(params) {
-  let getRandom = Math.floor(Math.random() * (1 - 100)) + 1;
   let data = {
-    messageKey: `${params.RRC_PeopleId__c}${getRandom}`,
-    keyDefinition: "medios-custom-emails",
-    contactKey:
-      "Unique identifier for a subscriber in Marketing Cloud [Example] icanul@royalresorts.com",
-    to: "icanul@royalresorts.com",
+    ...params,
+    SubscriberKey: "0037788icanul",
+    EmailAddress: "icanul@royalresorts.com",
   };
-  return axios.post(apiUrlSF + `/emails/sendMessage`);
+  return axios.post(apiUrlSF + `/dtExtensions/${dtSpecialClients}`, data);
 }

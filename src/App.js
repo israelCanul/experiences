@@ -8,6 +8,7 @@ const Home = React.lazy(() => import("./pages/index"));
 const TourRelated = React.lazy(() => import("./pages/tour_related"));
 const Summary = React.lazy(() => import("./pages/summary"));
 const Confirmation = React.lazy(() => import("./pages/confirmation"));
+const Especialevents = React.lazy(() => import("./pages/especialevents"));
 
 const history = createBrowserHistory();
 
@@ -86,6 +87,15 @@ function App() {
               <div className="main_component fullscreen">
                 <Suspense fallback={<div>Loading...</div>}>
                   <Confirmation />
+                </Suspense>
+              </div>
+            </Page>
+          </Route>
+          <Route exact path={"/especialevents"}>
+            <Page title="Especial Events">
+              <div className="main_component">
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Especialevents />
                 </Suspense>
               </div>
             </Page>

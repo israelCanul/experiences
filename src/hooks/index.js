@@ -5,6 +5,7 @@ import {
   getTourSelected,
   setDataToMC,
   getParamsToContinue,
+  getInformationFromDEByPeopleID,
 } from "../api/index";
 import moment from "moment";
 import { getAllParamsFromUrl, formatingDateFromMC } from "../libs/helpers";
@@ -225,4 +226,24 @@ function getListFromWeather(res) {
     }
   }
   return weatherDaysList;
+}
+
+export function useGetInfoAboutPeopleIDFromDT(id = null) {
+  const [info, setInfo] = useState(null);
+  const [people, setPeopleID] = useState(id);
+  useEffect(() => {
+    let cancel = false;
+    if (info == null && people !== null) {
+      getInformationFromDEByPeopleID(people).then((res) => {
+        if (cancel) return;
+        if (res.data.results.length > 0) {
+          setInfo(res.data.results[0]);
+        }
+      });
+      return () => {
+        cancel = true;
+      };
+    }
+  }, [people, info]);
+  return [info, setPeopleID];
 }

@@ -22,6 +22,7 @@
       @include tablet {
         max-width: 300px;
       }
+
       h3 {
         margin: 5px 0px 0px;
       }
@@ -61,10 +62,17 @@
       @include tablet {
         // min-height: auto;
       }
+      &.image {
+        padding: 0px 5px;
+        picture {
+          margin: 0px auto;
+        }
+      }
       .wrapper_gallery {
         flex: 1;
         display: flex;
         flex-direction: column-reverse;
+        justify-content: start;
         @include desktop {
           flex-direction: row;
         }
@@ -92,9 +100,11 @@
           }
         }
         .viewer {
-          flex: 1;
           // background-color: blue;
           padding: 5px 5px;
+          @include desktop {
+            flex: 1;
+          }
           img {
             width: 100%;
           }
@@ -110,7 +120,8 @@
       flex-direction: column;
       justify-content: center;
       p,
-      h4 {
+      h4,
+      h3 {
         margin: 5px;
       }
     }
@@ -154,6 +165,58 @@
               font-weight: bold;
             }
           }
+        }
+      }
+    }
+    &.event {
+      // background-color: green;
+      padding: 10px 0px 10px;
+      margin-top: 10px;
+      @include mobile {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+      @include desktop {
+        // background-color: red;
+        padding: 20px 0px 70px;
+      }
+      &.inverted {
+        @include mobile {
+          flex-direction: column;
+        }
+      }
+      .itemsInclude {
+        display: flex;
+        flex-direction: column;
+        // align-items: center;
+        flex-wrap: wrap;
+        // background-color: gray;
+        padding: 0px;
+        @include tablet {
+          flex-direction: row;
+        }
+        li {
+          // background-color: yellow;
+          width: 100%;
+          min-width: 100px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          margin: 5px 0px;
+          padding: 5px 0px;
+          @include desktop {
+            width: 50%;
+          }
+
+          img {
+            max-width: 40px;
+            margin-right: 5px;
+          }
+        }
+      }
+      .totalSection {
+        span {
+          font-weight: bold;
         }
       }
     }
@@ -320,17 +383,60 @@
             line-height: 16px;
             padding: 6px 10px 5px;
           }
-          .custom-input {
-            cursor: pointer;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            span {
-              flex: 1;
-            }
-          }
+
           .react-datepicker__time-list-item.react-datepicker__time-list-item--disabled {
             display: none;
+          }
+        }
+      }
+    }
+  }
+  .custom-input {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    font-size: 13px;
+    border-radius: 4px;
+    box-shadow: inset 0 2px 2px #e9e9e9;
+    border: 1px solid #aeaeae;
+    line-height: 16px;
+    padding: 6px 10px 5px;
+    font-family: "Montserrat", sans-serif;
+    span {
+      flex: 1;
+    }
+  }
+  .formulario {
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin-bottom: 50px;
+    font-family: "Montserrat", sans-serif;
+    position: relative;
+    .title {
+      h4 {
+        text-align: center;
+      }
+    }
+    .form {
+      max-width: 400px;
+      margin: 0px auto;
+      .dataform {
+        margin: 5px 0px 10px;
+        .react-datepicker-wrapper {
+          width: 100%;
+          .custom-input {
+            width: 100%;
+          }
+        }
+        .custom-input {
+          padding: 10px 10px 8px;
+          background-color: white;
+          border-color: #cccccc;
+          span {
+            text-align: left;
+            color: #666;
           }
         }
       }

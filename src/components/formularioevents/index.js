@@ -3,7 +3,9 @@ import { forwardRef, useState } from "react";
 import Select from "react-select";
 import { add } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
+import "../../scss/formularioevents.scss";
 import arrowdown from "../../animations/arrow-down-thin-white.svg";
+import { sendEmailMessage } from "../../api";
 
 const options = [
   { value: "ROMANTIC DINNER", label: "ROMANTIC DINNER" },
@@ -14,22 +16,29 @@ const options = [
 const FormularioEvents = ({ data }) => {
   const [selectedP, setSelectedP] = useState();
   const [bookdate, setBookdate] = useState(null);
-  console.log(data);
+  const [error, setError] = useState(null);
+
   const onClick = (e) => {
     e.preventDefault();
     if (data !== null) {
-      console.log(data);
       let object = {
-        package: selectedP,
+        package: selectedP.value,
         name: data.Name,
         email: data.PersonEmail,
         date: bookdate,
         peopleID: data.RRC_PeopleId__c,
       };
-      console.log(object);
+      sendEmailMessage(object)
+        .then((response) => {
+          console.log(response);
+          setError(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setError(true);
+        });
     }
   };
-
   return (
     <div className="formulario">
       <div className="title">
@@ -64,6 +73,17 @@ const FormularioEvents = ({ data }) => {
           Send
         </a>
       </div>
+      {error !== null && error === false ? (
+        <div className="message operation">
+          <p>
+            <strong>Your information has been sent.</strong>
+            <br />
+            One of our representatives will contact you soon
+          </p>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

@@ -29,3 +29,14 @@ export const dtConverter =
   process.env.NODE_ENV !== "production"
     ? "9B63AB77-2647-4054-BABD-76E631650032"
     : "9B63AB77-2647-4054-BABD-76E631650032";
+export const dtAccountSalesforceSync =
+  process.env.NODE_ENV !== "production"
+    ? "Account_Salesforce"
+    : "Account_Salesforce";
+
+export const dtSpecialClients =
+  process.env.NODE_ENV !== "production"
+    ? "EE7BDFA3-C494-4945-B618-439A80C7EFB0"
+    : "EE7BDFA3-C494-4945-B618-439A80C7EFB0";
+export const urlImagenes = "https://experiences.royalresorts.com/images/";
+// https://experiences.royalresorts.com/images/birthday-decoration.jpg

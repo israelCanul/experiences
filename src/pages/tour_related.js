@@ -28,20 +28,36 @@ const TourList = () => {
   };
   const experiencesSelected = getExperiencesSelected();
 
+  console.log(experiencesSelected);
+  console.log(tours);
   if (experiencesSelected.length >= 1 && tours) {
     let resortSelected = getCookieForm("resort", getLanguage());
+    if (resortSelected !== "RH") {
+      resortSelected = "CUN";
+    }
     //tour filtred before adding to tourlist Item
     const renderExp = experiencesSelected.map((experience) => {
       let toursByExperience = [];
       let title = experience.name;
-      let icon = "/temporal/img/icon_yatch.png";
+      let icon = experience.icon
+        ? `/img/steps/${experience.icon}-black.png`
+        : "/temporal/img/icon_yatch.png";
+      //console.log("Resorts selected", resortSelected);
       tours.map((tour) => {
         //validamos que el tour sea uno de los correspondientes al converterClass y al asignados al resort
+
         if (
           parseInt(tour.ConverterClassID) === parseInt(experience.id) &&
           tour.ConverterProperty === resortSelected
         ) {
           //agregamos el tour listo para anexar a la lista
+          console.log(
+            tour.ConverterClassID,
+            experience.id,
+            tour.ConverterProperty,
+            resortSelected
+          );
+          console.log(tour);
           toursByExperience.push(tour);
         }
         return true;

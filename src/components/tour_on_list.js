@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { setDataMC } from "../hooks";
 import Loading from "./loader/loading";
 import { useState } from "react";
+import { urlImagenes } from "../libs/config";
 
 const TourOnList = ({ data }) => {
   let history = useHistory();
@@ -43,7 +44,7 @@ const TourOnList = ({ data }) => {
         <Imagen
           src={
             data.ConverterImage !== ""
-              ? data.ConverterImage
+              ? urlImagenes + data.ConverterImage
               : "/img/default.png"
           }
           className="tour_image"

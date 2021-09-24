@@ -8,7 +8,7 @@ const ToursList = ({ data, title, icon }) => {
   return (
     <div className="toursResult">
       <div className="title">
-        <img width="30" height="28" src={icon} alt="icon" />
+        <img width="30" src={icon} alt="icon" />
         <span>{title}</span>
       </div>
       <div className="list_tours">{renderTours}</div>

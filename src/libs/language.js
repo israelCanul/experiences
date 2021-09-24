@@ -41,4 +41,6 @@ textos = {
   "Email sent: ": "Email sent: ",
   "We look forward to welcoming you soon":
     "We look forward to welcoming you soon",
+  "Add even more magic to your upcoming vacation with these packages.":
+    "Add even more magic to your upcoming vacation with these packages.",
 };
