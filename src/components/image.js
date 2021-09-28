@@ -9,15 +9,12 @@ const Imagen = ({
 }) => {
   let name = src;
   let nameOfImage = "";
-  if (name.search(".png")) {
+  if (name.search(".png") >= 0) {
     nameOfImage = name.replace(".png", "");
   }
-  if (name.search(".jpg")) {
+  if (name.search(".jpg") >= 0) {
     nameOfImage = name.replace(".jpg", "");
   }
-  // let name = src.split(".");
-
-  // let nameOfImage = name.pop().
   return (
     <picture height={height} width={width} className={className}>
       <source srcSet={nameOfImage + ".webp"} type="image/webp"></source>
@@ -34,5 +31,4 @@ const Imagen = ({
     </picture>
   );
 };
-
 export default Imagen;

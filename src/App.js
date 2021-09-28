@@ -36,19 +36,6 @@ function App() {
       }
     }
   };
-  // const checkCookies = () => {
-  //   if (!checkForCookies()) {
-  //     return (
-  //       <Route>
-  //         <Redirect
-  //           to={{
-  //             pathname: "/error_page/?error=missing params",
-  //           }}
-  //         />
-  //       </Route>
-  //     );
-  //   }
-  // };
 
   return (
     <div className="App">
@@ -59,28 +46,33 @@ function App() {
               <MissingParams />
             </div>
           </Route>
-
           <Route exact path={"/"}>
             {checkForParams()}
-            <div className="main_component fullscreen">
-              <Suspense fallback={<div>Loading...</div>}>
-                <Home params={query} />
-              </Suspense>
-            </div>
+            <Page title="Experiences">
+              <div className="main_component fullscreen">
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Home params={query} />
+                </Suspense>
+              </div>
+            </Page>
           </Route>
           <Route exact path={"/tour_related"}>
-            <div className="main_component">
-              <Suspense fallback={<div>Loading...</div>}>
-                <TourRelated />
-              </Suspense>
-            </div>
+            <Page title="Tours List">
+              <div className="main_component">
+                <Suspense fallback={<div>Loading...</div>}>
+                  <TourRelated />
+                </Suspense>
+              </div>
+            </Page>
           </Route>
           <Route exact path={"/tour_summary"}>
-            <div className="main_component">
-              <Suspense fallback={<div>Loading...</div>}>
-                <Summary />
-              </Suspense>
-            </div>
+            <Page title="Summary">
+              <div className="main_component">
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Summary />
+                </Suspense>
+              </div>
+            </Page>
           </Route>
           <Route exact path={"/confirmation"}>
             <Page title="Confirmation">

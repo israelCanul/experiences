@@ -9,6 +9,7 @@ import {
   dtAccountSalesforceSync,
   dtSpecialClients,
 } from "../libs/config";
+import { getExperiencesSelected, getCookieForm } from "../libs/cookieManager";
 import { getLanguage } from "../libs/language";
 
 export function getParamsToContinue(peopleID) {
@@ -116,4 +117,47 @@ export function sendEmailMessage(params) {
     EmailAddress: "icanul@royalresorts.com",
   };
   return axios.post(apiUrlSF + `/dtExtensions/${dtSpecialClients}`, data);
+}
+
+export async function setPreferencesToCRM(
+  callback = () => {},
+  callbackE = () => {}
+) {
+  let preferences = getExperiencesSelected();
+  if (preferences.length > 0) {
+    let dataRequest = {
+      PersonContactId: getCookieForm("contactID", getLanguage()),
+      RRC_PreferenceType__c: "INTERE",
+      records: [],
+    };
+    preferences.map((p) => {
+      dataRequest.records.push({ RRC_Preference__c: p.code });
+    });
+
+    const token = await axios
+      .post(apiUrlSF + `/CRM/getTokenByServer`)
+      .then((responseT) => {
+        axios({
+          method: "post",
+          url: apiUrlSF + `/CRM/setPreferences`,
+          data: dataRequest,
+          headers: {
+            "Content-Type": "application/json;charset=UTF-8",
+            Authorization: `Bearer ${responseT.data.token.access_token}`,
+          },
+        })
+          .then((response) => {
+            console.log(response);
+            if (response.data.code >= 0) {
+              callback();
+            } else {
+              callbackE(response.data.Error);
+            }
+          })
+          .catch((Err) => {
+            callbackE(Err);
+          });
+      });
+    return token;
+  }
 }

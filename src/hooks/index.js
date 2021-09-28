@@ -6,6 +6,7 @@ import {
   setDataToMC,
   getParamsToContinue,
   getInformationFromDEByPeopleID,
+  getAccountFromCRM,
 } from "../api/index";
 import moment from "moment";
 import { getAllParamsFromUrl, formatingDateFromMC } from "../libs/helpers";
@@ -67,31 +68,29 @@ export function useExperiences() {
   useEffect(() => {
     let cancel = false;
     if (experiences == null) {
-      getExperiences().then(
-        (res) => {
-          if (cancel) return;
-          let experiences = [];
-          res.data.results.map((exp) => {
-            let temp = {
-              id: exp.ConverterClassID,
-              name: exp.ConverterClassDescEng
-                ? exp.ConverterClassDescEng
-                : exp.ConverterClassDescSpa,
-              icon: exp.ConverterClassIcon,
-              image: exp.ConverterClassImage,
-            };
-            experiences.push(temp);
-            return true;
-          });
-          setExperiences(experiences);
-        },
-        [experiences]
-      );
+      getExperiences().then((res) => {
+        if (cancel) return;
+        let experiences = [];
+        res.data.results.map((exp) => {
+          let temp = {
+            code: exp.ConverterClassCode,
+            id: exp.ConverterClassID,
+            name: exp.ConverterClassDescEng
+              ? exp.ConverterClassDescEng
+              : exp.ConverterClassDescSpa,
+            icon: exp.ConverterClassIcon,
+            image: exp.ConverterClassImage,
+          };
+          experiences.push(temp);
+          return true;
+        });
+        setExperiences(experiences);
+      });
       return () => {
         cancel = true;
       };
     }
-  });
+  }, [experiences]);
   return experiences;
 }
 export function useQuery() {

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Imagen from "../image";
+import { urlImagenes } from "../../libs/config";
 
 const Gallery = ({ imagenes = [] }) => {
   const [selected, setSelected] = useState(0);
@@ -9,7 +10,7 @@ const Gallery = ({ imagenes = [] }) => {
   const renderThumbs = imagenes.map((imagen, id) => {
     return (
       <div key={id} className="thumbnail" onClick={() => setImage(id)}>
-        <Imagen src={imagen} className="imagen" />
+        <Imagen src={urlImagenes + imagen} className="imagen" />
       </div>
     );
   });
@@ -20,7 +21,7 @@ const Gallery = ({ imagenes = [] }) => {
     <div className="wrapper_gallery">
       <div className="thumbnails">{renderThumbs}</div>
       <div className="viewer">
-        <Imagen src={imagenes[selected]} className="imagen" />
+        <Imagen src={urlImagenes + imagenes[selected]} className="imagen" />
       </div>
     </div>
   );

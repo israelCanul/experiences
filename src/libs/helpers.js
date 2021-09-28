@@ -22,9 +22,7 @@ export function makeID(params = []) {
 
 export function formatingDateToCRM(date) {
   if (date !== "") {
-    //11-08-2021
-    //2019-11-24
-    let dateFormated = date.split("-");
+    let dateFormated = date.split("/");
     dateFormated = `${dateFormated[2]}-${dateFormated[0]}-${dateFormated[1]}`;
     return dateFormated;
   } else {

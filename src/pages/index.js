@@ -2,6 +2,7 @@ import { Fragment, useEffect } from "react";
 import ExperiencesList from "../components/experiences_list";
 import Header from "../sections/header";
 import { saveParams } from "../libs/cookieManager";
+
 const Home = ({ params }) => {
   useEffect(() => {
     saveParams(params);

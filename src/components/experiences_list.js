@@ -12,11 +12,13 @@ const ExperiencesList = () => {
 
   useEffect(() => {
     let idExperiences = [];
-    selecteds.map((select) => {
-      idExperiences.push(select);
-      return true;
-    });
-    saveExperiencesSelected(idExperiences);
+    if (selecteds.length > 0) {
+      selecteds.map((select) => {
+        idExperiences.push(select);
+        return true;
+      });
+      saveExperiencesSelected(idExperiences);
+    }
   }, [selecteds]);
   let addExperience = (experience) => {
     const experienceSelected = selecteds.find(

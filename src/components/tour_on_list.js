@@ -6,6 +6,7 @@ import { setDataMC } from "../hooks";
 import Loading from "./loader/loading";
 import { useState } from "react";
 import { urlImagenes } from "../libs/config";
+import { setPreferencesToCRM } from "../api/index";
 
 const TourOnList = ({ data }) => {
   let history = useHistory();
@@ -28,9 +29,16 @@ const TourOnList = ({ data }) => {
     setDataMC(
       params,
       () => {
-        setSelected(false);
-        saveParams({ serviceID: data.ConverterID });
-        history.push("/tour_summary");
+        setPreferencesToCRM(
+          () => {
+            setSelected(false);
+            saveParams({ serviceID: data.ConverterID });
+            history.push("/tour_summary");
+          },
+          (err) => {
+            setError(err);
+          }
+        );
       },
       (err) => {
         setError(err);
