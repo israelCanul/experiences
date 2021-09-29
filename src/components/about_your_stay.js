@@ -2,7 +2,7 @@ import RadioButton from "./radio_button";
 const AboutStay = ({ celebration = "", setCelebration }) => {
   return (
     <div className="celebrationsSection">
-      <h3>About Your Stay</h3>
+      <h3>ABOUT YOUR STAY</h3>
       <div className="celebrationsSection_wrapper">
         <h4>Are you celebrating anything special during your stay?</h4>
         <div className="celebrations">
@@ -22,7 +22,7 @@ const AboutStay = ({ celebration = "", setCelebration }) => {
             active={celebration === "MARRIAGE"}
             callback={() => setCelebration("MARRIAGE")}
           >
-            Marriage Proposal
+            Engagement
           </RadioButton>
           <RadioButton
             active={celebration === "OTHER"}

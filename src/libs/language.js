@@ -29,8 +29,8 @@ export function setTextToTraslateTool(textResp) {
 textos = {
   Continue: "Continuar",
   "Select Experience": "Select Experience",
-  "No charge will be made to your credit card at this time. Your Vacation Package will be charged to your room account until you check out of your stay.":
-    "No charge will be made to your credit card at this time. Your Vacation Package will be charged to your room account until you check out of your stay.",
+  "No charges will be made to your credit card at this time. Your Vacation Package will be charged to your room account to be paid at checkout at the end of your stay.":
+    "No charges will be made to your credit card at this time. Your Vacation Package will be charged to your room account to be paid at checkout at the end of your stay.",
   "Tour summary": "Tour summary",
   Cancun: "Cancún",
   "preference center": "preference center",
@@ -43,4 +43,8 @@ textos = {
     "We look forward to welcoming you soon",
   "Add even more magic to your upcoming vacation with these packages.":
     "Add even more magic to your upcoming vacation with these packages.",
+  "Plan ahead and enjoy an even better vacation!":
+    "Plan ahead and enjoy an even better vacation!",
+  "Choose your adventures now and use your time when you arrive to get a better tan on the beach":
+    "Choose your adventures now and use your time when you arrive to get a better tan on the beach",
 };

@@ -68,7 +68,10 @@ const TourOnList = ({ data }) => {
           </div>
           <div className="price_item special">
             {getTexto("Special price")}:
-            <span className="special"> ${data.ConverterSpecialPrice} USD</span>
+            <span className="special" style={{ fontSize: "17px" }}>
+              {" "}
+              ${data.ConverterSpecialPrice} USD
+            </span>
           </div>
         </div>
       </div>

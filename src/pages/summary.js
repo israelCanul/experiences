@@ -24,6 +24,7 @@ import { formatingDateToCRM } from "../libs/helpers";
 import Loading from "../components/loader/loading";
 
 const Summary = () => {
+  const [agreeTerms, setAgreeTerms] = useState(false);
   const [agree, setAgree] = useState(null);
   const [celebration, setCelebration] = useState("");
   const [book, setBook] = useState(null);
@@ -54,7 +55,10 @@ const Summary = () => {
         checkOut: formatingDateToCRM(
           getCookieForm("checkOutDate", getLanguage())
         ),
-        resort: "RS",
+        resort:
+          getCookieForm("resort", getLanguage()) === "RH"
+            ? "GRMT"
+            : getCookieForm("resort", getLanguage()),
       };
       getWavesFromCRM(params).then((response) => {
         if (parseInt(response.data.code) >= 0) {
@@ -113,8 +117,10 @@ const Summary = () => {
     return (
       <div className="summary">
         <Header
-          title="Plan ahead and get a better vacation?"
-          description="Choose your adventure now and use your time to get the perfect tan on the beach"
+          title={getTexto("Plan ahead and enjoy an even better vacation!")}
+          description={getTexto(
+            "Choose your adventures now and use your time when you arrive to get a better tan on the beach"
+          )}
         />
         <div className="title_summary">
           <div className="title">
@@ -123,14 +129,18 @@ const Summary = () => {
           <div className="description">
             <p>
               {getTexto(
-                "No charge will be made to your credit card at this time. Your Vacation Package will be charged to your room account until you check out of your stay."
+                "No charges will be made to your credit card at this time. Your Vacation Package will be charged to your room account to be paid at checkout at the end of your stay."
               )}
             </p>
           </div>
         </div>
         <TourDetail data={tourS} />
-        <ContinueSummary agree={agree} setAgree={setAgree} />
-        <Collapser active={agree && waves && waves.length > 0}>
+        <ContinueSummary
+          setTerms={setAgreeTerms}
+          agree={agree}
+          setAgree={setAgree}
+        />
+        <Collapser active={agree && agreeTerms && waves && waves.length > 0}>
           <BookApointment waves={waves} setBook={setBook} />
         </Collapser>
         {agree && waves === null ? (
@@ -179,7 +189,7 @@ const Summary = () => {
           celebration !== "" &&
           ((agree && book !== null) || !agree) ? (
             <a onClick={saveSelection.bind(this)} href="/">
-              Continue
+              CONTINUE
             </a>
           ) : (
             ""

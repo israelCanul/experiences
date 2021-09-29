@@ -24,4 +24,18 @@ $grayTextRR: rgb(117, 118, 120);
       background-color: rgba($blueRR, 0.2);
     }
   }
+  .checkBox {
+    border-color: rgba($blueRR, 0.3);
+    background-color: rgba($grayTextRR, 0.3);
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -o-border-radius: 0px;
+
+    &.active {
+      border-color: $blueRR;
+      background-color: rgba($blueRR, 0.7);
+    }
+  }
 }

@@ -70,11 +70,12 @@ const Book = ({ setBook = () => {}, waves = null }) => {
 
   return (
     <div className="booksection">
-      <h3>Book your appointment</h3>
+      <h3>BOOK YOUR APPOINTMENT</h3>
       <div className="booksection_wrapper">
         <p>
-          As part of your vacation package, you will know our incredible Royal
-          Resorts world product.
+          As part of your vacation package, you will discover the Royal Resorts
+          world and the amazing lifestyle and leisure benefits it offers you as
+          a member.
         </p>
         <div className="datepickersection">
           {waves ? (
@@ -98,7 +99,7 @@ const Book = ({ setBook = () => {}, waves = null }) => {
               <div className="time picker">
                 {booktime ? (
                   <DatePicker
-                    placeholderText="Choose a Time"
+                    placeholderText="Choose a time"
                     selected={booktime}
                     onChange={(date) => setBooktime(date)}
                     showTimeSelect={true}
@@ -113,7 +114,7 @@ const Book = ({ setBook = () => {}, waves = null }) => {
                   />
                 ) : (
                   <DatePicker
-                    placeholderText="Choose a Time"
+                    placeholderText="Choose a time"
                     selected={booktime}
                     onChange={(date) => setBooktime(date)}
                     showTimeSelect={true}
@@ -142,7 +143,7 @@ const Book = ({ setBook = () => {}, waves = null }) => {
               <div className="time picker">
                 <DatePicker
                   disabled
-                  placeholderText="Choose a Time"
+                  placeholderText="Choose a time"
                   showTimeSelectOnly
                   timeIntervals={30}
                   timeCaption="Time"

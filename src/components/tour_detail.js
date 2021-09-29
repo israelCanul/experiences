@@ -36,7 +36,9 @@ const TourDetail = ({ data = null }) => {
         <div className="total">
           <ul>
             <li>
-              <div className="description">{data.ConverterDesc}</div>
+              <div className="description">
+                <strong>{data.ConverterDesc}</strong>
+              </div>
               <div className="price">${data.ConverterRegularPrice} USD</div>
             </li>
             <li>
@@ -54,7 +56,7 @@ const TourDetail = ({ data = null }) => {
               </div>
             </li>
             <li>
-              <div className="description">Special Price</div>
+              <div className="description">Special Rate</div>
               <div className="price totalPrice">
                 ${data.ConverterSpecialPrice} USD
               </div>
