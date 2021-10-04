@@ -33,7 +33,7 @@ const TourOnList = ({ data }) => {
           () => {
             setSelected(false);
             saveParams({ serviceID: data.ConverterID });
-            history.push("/tour_summary");
+            history.push("/summary");
           },
           (err) => {
             setError(err);

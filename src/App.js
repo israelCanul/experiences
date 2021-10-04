@@ -56,7 +56,7 @@ function App() {
               </div>
             </Page>
           </Route>
-          <Route exact path={"/tour_related"}>
+          <Route exact path={"/experiences"}>
             <Page title="Tours List">
               <div className="main_component">
                 <Suspense fallback={<div>Loading...</div>}>
@@ -65,7 +65,7 @@ function App() {
               </div>
             </Page>
           </Route>
-          <Route exact path={"/tour_summary"}>
+          <Route exact path={"/summary"}>
             <Page title="Summary">
               <div className="main_component">
                 <Suspense fallback={<div>Loading...</div>}>
@@ -83,7 +83,7 @@ function App() {
               </div>
             </Page>
           </Route>
-          <Route exact path={"/especialevents"}>
+          <Route exact path={"/special-events"}>
             <Page title="Especial Events">
               <div className="main_component">
                 <Suspense fallback={<div>Loading...</div>}>

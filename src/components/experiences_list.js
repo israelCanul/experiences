@@ -79,7 +79,7 @@ const ExperiencesList = () => {
       {renderExperiences}
       <div className={style.actions}>
         {selecteds.length > 0 ? (
-          <Link to="/tour_related" state={{ search: window.location.search }}>
+          <Link to="/experiences" state={{ search: window.location.search }}>
             {getTexto("Continue")}
           </Link>
         ) : (

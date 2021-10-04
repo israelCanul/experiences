@@ -13,10 +13,19 @@ import { getExperiencesSelected, getCookieForm } from "../libs/cookieManager";
 import { getLanguage } from "../libs/language";
 
 export function getParamsToContinue(peopleID) {
-  return axios.get(
-    apiUrlSF +
-      `/dtExtensions/${dtConverterTransaction}?fields=StayID,ContactID,ConverterID,Resort,CheckInDate,CheckOutDate&q=PeopleID,equals,${peopleID}`
-  );
+  return axios({
+    method: "get",
+    url:
+      apiUrlSF +
+      `/dtExtensions/${dtConverterTransaction}?fields=StayID,ContactID,ConverterID,Resort,CheckInDate,CheckOutDate&q=PeopleID,equals,${peopleID}`,
+    headers: {
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  });
+  // return axios.get(
+  //   apiUrlSF +
+  //     `/dtExtensions/${dtConverterTransaction}?fields=StayID,ContactID,ConverterID,Resort,CheckInDate,CheckOutDate&q=PeopleID,equals,${peopleID}`
+  // );
 }
 
 export function getExperiences() {
@@ -46,9 +55,10 @@ export function getTours() {
 }
 
 export function setDataToMC(params) {
+  console.log("este cargo");
   if (getLanguage() === "en-US")
     return axios({
-      method: "post",
+      method: "POST",
       url: apiUrlSF + `/dtExtensions/${dtConverterTransaction}`,
       data: params,
       headers: {
@@ -56,15 +66,15 @@ export function setDataToMC(params) {
       },
     });
 
-  if (getLanguage() === "es-MX")
-    return axios({
-      method: "post",
-      url: apiUrlSF + `/dtExtensions/${dtConverterTransaction}`,
-      data: params,
-      headers: {
-        "Content-Type": "application/json;charset=UTF-8",
-      },
-    });
+  // if (getLanguage() === "es-MX")
+  //   return axios({
+  //     method: "post",
+  //     url: apiUrlSF + `/dtExtensions/${dtConverterTransaction}`,
+  //     data: params,
+  //     headers: {
+  //       "Content-Type": "application/json;charset=UTF-8",
+  //     },
+  //   });
 }
 //CRM/getWaves
 ///getTokenByServer
@@ -132,6 +142,7 @@ export async function setPreferencesToCRM(
     };
     preferences.map((p) => {
       dataRequest.records.push({ RRC_Preference__c: p.code });
+      return true;
     });
 
     const token = await axios

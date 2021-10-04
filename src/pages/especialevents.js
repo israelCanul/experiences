@@ -38,10 +38,10 @@ const Especialevents = () => {
         title="ROMANTIC DINNER"
         description="From the beach to a waterfront terrace, a Romantic Dinner is the perfect way to celebrate an anniversary, birthday or engagement and whenever you want to add even more Mexican Caribbean magic to your vacation."
         gallery={[
-          `${urlImagenes}romantic-dinner-1.jpg`,
-          `${urlImagenes}romantic-dinner-2.jpg`,
-          `${urlImagenes}romantic-dinner-3.jpg`,
-          `${urlImagenes}romantic-dinner-4.jpg`,
+          `romantic-dinner-1.jpg`,
+          `romantic-dinner-2.jpg`,
+          `romantic-dinner-3.jpg`,
+          `romantic-dinner-4.jpg`,
         ]}
       >
         <ul className="itemsInclude">

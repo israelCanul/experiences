@@ -1,16 +1,15 @@
 import { getTexto } from "../libs/language";
 import Wheater from "../components/wheater";
-
-import { useWheater } from "../hooks";
+import React from "react";
+import { useQuery, useWheater } from "../hooks";
 import Header from "../sections/header";
 import BG from "../animations/fondoWeather.jpg";
 import "../scss/confirmation.scss";
 import { useState } from "react";
 const Confirmation = () => {
-  const [modalOpen, setModalOpen] = useState(true);
+  const query = useQuery();
 
-  let document = Document;
-  document.title = "Confirmation";
+  const [modalOpen, setModalOpen] = useState(true);
 
   //agree/disagree to take the meeting
   const weather = useWheater();
@@ -20,8 +19,10 @@ const Confirmation = () => {
       style={{ backgroundImage: "url(" + BG + ")" }}
     >
       <Header
-        title="This is what the weather is like in paradise toda"
-        description="You can check here the forecast for the next days"
+        title={getTexto("This is what the weather is like in paradise today")}
+        description={getTexto(
+          "You can check here the forecast for the next days"
+        )}
       />
       <div className="weather">
         <Wheater
@@ -33,12 +34,16 @@ const Confirmation = () => {
       <div className="actions">
         <a href="/">{getTexto("preference center")}</a>
       </div>
-      <Modal open={modalOpen} toggleModal={setModalOpen} />
+      <Modal
+        agree={query && query.noagree ? query.noagree : false}
+        open={modalOpen}
+        toggleModal={setModalOpen}
+      />
     </div>
   );
 };
 
-const Modal = ({ open = false, toggleModal = () => {} }) => {
+const Modal = ({ open = false, agree = true, toggleModal = () => {} }) => {
   return (
     <div className={`modal ${open === true ? "active" : "ss"}`}>
       <div className="modal_background"></div>
@@ -51,17 +56,33 @@ const Modal = ({ open = false, toggleModal = () => {} }) => {
             }}
           ></div>
         </div>
-        <h3>{getTexto("Thank You")}!</h3>
-        <p>
-          {getTexto("Your reservation has been placed")}.<br />
-          {getTexto(
-            "Please read the details of your reservation found on your confirmation email"
-          )}
-          <br />
-          {/* {`${getTexto("Email sent: ")} `} */}
-          <br />
-        </p>
-        <p>{getTexto("We look forward to welcoming you soon")}!</p>
+        {agree === false ? (
+          <React.Fragment>
+            <h3>{getTexto("Thank You")}!</h3>
+            <p>
+              {getTexto("Your reservation has been placed")}.<br />
+              {getTexto(
+                "Please read the details of your reservation found on your confirmation email"
+              )}
+              <br />
+              {/* {`${getTexto("Email sent: ")} `} */}
+              <br />
+            </p>
+            <p>{getTexto("We look forward to welcoming you soon")}!</p>
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <h3>{getTexto("Thank you for your reply")}!</h3>
+            <p>
+              {getTexto(
+                "Your Concierge will be in contact soon to help you with your vacation plans."
+              )}
+              <br />
+              {/* {`${getTexto("Email sent: ")} `} */}
+              <br />
+            </p>
+          </React.Fragment>
+        )}
       </div>
     </div>
   );

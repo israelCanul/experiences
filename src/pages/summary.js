@@ -55,10 +55,7 @@ const Summary = () => {
         checkOut: formatingDateToCRM(
           getCookieForm("checkOutDate", getLanguage())
         ),
-        resort:
-          getCookieForm("resort", getLanguage()) === "RH"
-            ? "GRMT"
-            : getCookieForm("resort", getLanguage()),
+        resort: getCookieForm("resort", getLanguage()) === "RH" ? "GRMT" : "RS",
       };
       getWavesFromCRM(params).then((response) => {
         if (parseInt(response.data.code) >= 0) {

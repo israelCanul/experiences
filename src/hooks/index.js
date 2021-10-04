@@ -94,7 +94,7 @@ export function useExperiences() {
   return experiences;
 }
 export function useQuery() {
-  const [params, setParams] = useState(null);
+  const [params, setParams] = useState();
   useEffect(() => {
     const parametros = getAllParamsFromUrl();
     setParams(parametros);
