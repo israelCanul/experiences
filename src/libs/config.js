@@ -1,8 +1,8 @@
 export const apiUrl = process.env.NODE_ENV !== "production" ? "" : "";
 export const apiUrlSF =
   process.env.NODE_ENV !== "production"
-    ? "http://qrs.royalresorts.mobi"
-    : "http://qrs.royalresorts.mobi";
+    ? "https://softwaresanchez.mx"
+    : "https://softwaresanchez.mx";
 export const apiWheater =
   process.env.NODE_ENV !== "production"
     ? "https://api.openweathermap.org/data/2.5/forecast?id=3531673&APPID=cb2558da57ff93c9bd45f6c9fbd8e6ea&units=imperial"
