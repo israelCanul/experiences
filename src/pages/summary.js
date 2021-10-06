@@ -70,7 +70,7 @@ const Summary = () => {
     e.preventDefault();
     setloading(true);
     const params = {
-      ynAcceptT_C: agree,
+      ynAcceptT_C: agree ? "True" : "False",
       ContactID: getCookieForm("contactID", getLanguage()),
       PeopleID: getCookieForm("peopleID", getLanguage()),
       StayID: getCookieForm("stayID", getLanguage()),
@@ -83,7 +83,11 @@ const Summary = () => {
       () => {
         //funcion callback pra cuando el guardado sea exitoso por parte de MC
         setloading(false);
-        window.location = "/confirmation";
+        if (agree) {
+          window.location = "/confirmation";
+        } else {
+          window.location = "/confirmation?noagree=false";
+        }
       },
       (err) => {
         setloading(false);

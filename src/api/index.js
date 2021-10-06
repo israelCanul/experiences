@@ -55,7 +55,6 @@ export function getTours() {
 }
 
 export function setDataToMC(params) {
-  console.log("este cargo");
   if (getLanguage() === "en-US")
     return axios({
       method: "POST",
