@@ -23,13 +23,9 @@ export function makeID(params = []) {
 export function formatingDateToCRM(date) {
   if (date !== "") {
     let dateFormated = date.split("/");
-    console.log(dateFormated);
-    if (dateFormated.lenght === 1) {
-      console.log("aqui entro");
+    if (dateFormated.length === 1) {
       dateFormated = date.split("-");
     }
-    console.log(dateFormated);
-
     dateFormated = `${dateFormated[2]}-${dateFormated[0]}-${dateFormated[1]}`;
     return dateFormated;
   } else {

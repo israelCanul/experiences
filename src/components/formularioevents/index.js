@@ -6,18 +6,18 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../../scss/formularioevents.scss";
 import arrowdown from "../../animations/arrow-down-thin-white.svg";
 import { sendEmailMessage } from "../../api";
+import { getTexto } from "../../libs/language";
 
 const options = [
-  { value: "ROMANTIC DINNER", label: "ROMANTIC DINNER" },
-  { value: "ROMANTIC ROOM DECOR", label: "ROMANTIC ROOM DECOR" },
-  { value: "BIRTHDAY DECORATION", label: "BIRTHDAY DECORATION" },
+  { value: "ROMANTIC DINNER", label: getTexto("ROMANTIC DINNER") },
+  { value: "ROMANTIC ROOM DECOR", label: getTexto("ROMANTIC ROOM DECOR") },
+  { value: "BIRTHDAY DECORATION", label: getTexto("BIRTHDAY DECORATION") },
 ];
 
 const FormularioEvents = ({ data }) => {
   const [selectedP, setSelectedP] = useState();
   const [bookdate, setBookdate] = useState(null);
   const [error, setError] = useState(null);
-
   const onClick = (e) => {
     e.preventDefault();
     if (data !== null) {
@@ -43,8 +43,9 @@ const FormularioEvents = ({ data }) => {
     <div className="formulario">
       <div className="title">
         <h4>
-          %%Username%%, please fill out this form and one of our representatives
-          will contact you
+          {`%%Username%%, ${getTexto(
+            "please fill out this form and one of our representatives will contact you"
+          )}`}
         </h4>
       </div>
       <div className="form">
@@ -76,9 +77,9 @@ const FormularioEvents = ({ data }) => {
       {error !== null && error === false ? (
         <div className="message operation">
           <p>
-            <strong>Your information has been sent.</strong>
+            <strong>{getTexto("Your information has been sent")}.</strong>
             <br />
-            One of our representatives will contact you soon
+            {getTexto("One of our representatives will contact you soon")}
           </p>
         </div>
       ) : (

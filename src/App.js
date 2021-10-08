@@ -4,6 +4,7 @@ import React, { Suspense } from "react";
 import { useQuery } from "./hooks";
 import { createBrowserHistory } from "history";
 import Page from "./pages/page.js";
+import { getTexto } from "./libs/language";
 const Home = React.lazy(() => import("./pages/index"));
 const TourRelated = React.lazy(() => import("./pages/tour_related"));
 const Summary = React.lazy(() => import("./pages/summary"));
@@ -68,7 +69,7 @@ function App() {
           <Route exact path={"/summary"}>
             <Page title="Summary">
               <div className="main_component">
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<div>{getTexto("Loading")}...</div>}>
                   <Summary />
                 </Suspense>
               </div>
@@ -77,7 +78,7 @@ function App() {
           <Route exact path={"/confirmation"}>
             <Page title="Confirmation">
               <div className="main_component fullscreen">
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<div>{getTexto("Loading")}...</div>}>
                   <Confirmation />
                 </Suspense>
               </div>
@@ -86,7 +87,7 @@ function App() {
           <Route exact path={"/special-events"}>
             <Page title="Especial Events">
               <div className="main_component">
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<div>{getTexto("Loading")}...</div>}>
                   <Especialevents />
                 </Suspense>
               </div>
@@ -104,7 +105,7 @@ const NotFound = () => {
     <div className="main_component">
       <div className="NotFound">
         <p>
-          Not Found - <span>404</span>
+          {getTexto("Not Found")} - <span>404</span>
         </p>
       </div>
     </div>
@@ -117,7 +118,7 @@ const MissingParams = () => {
       <div className="error_page">
         <p> Error: </p>
         {query ? (
-          <p>{query.error ? query.error : "Something was wrong"}</p>
+          <p>{query.error ? query.error : getTexto("Something was wrong")}</p>
         ) : (
           ""
         )}

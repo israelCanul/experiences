@@ -13,7 +13,8 @@ const Especialevents = () => {
   const query = useQuery();
 
   useEffect(() => {
-    if (query !== null) {
+    if (query) {
+      console.log(query);
       if (query.peopleID) {
         setPeopleID(query.peopleID);
       }
@@ -25,7 +26,9 @@ const Especialevents = () => {
       <Header title="Special Events" description="Creating magical moments" />
       <div className="title_summary">
         <div className="description">
-          <h3>%%USERNAME%%, Are you celebrating something special?</h3>
+          <h3>
+            %%USERNAME%%, {getTexto("Are you celebrating something special")}?
+          </h3>
           <p>
             {getTexto(
               "Add even more magic to your upcoming vacation with these packages."
@@ -50,40 +53,40 @@ const Especialevents = () => {
               src="/img/specialevents/icon-dinner.png"
               alt="icon dinner"
             />
-            Delicious menu for two{" "}
+            {getTexto("Delicious menu for two")}
           </li>
           <li>
             <Imagen
               src="/img/specialevents/icon-location.png"
               alt="icon location"
             />
-            Choice of locations
+            {getTexto("Choice of locations")}
           </li>
           <li>
             <Imagen src="/img/specialevents/icon-toast.png" alt="icon toast" />
-            One bottle of wine, choose from a selection{" "}
+            {getTexto("One bottle of wine, choose from a selection")}
           </li>
           <li>
             <Imagen
               src="/img/specialevents/icon-service.png"
               alt="icon service"
             />
-            Service for two hours
+            {getTexto("Service for two hours")}
           </li>
           <li>
             <Imagen
               src="/img/specialevents/icon-waiter.png"
               alt="icon waiter"
             />
-            Romantic décor
+            {getTexto("Romantic décor")}
           </li>
           <li>
             <Imagen src="/img/specialevents/icon-rose.png" alt="icon rose" />
-            Your own waiter{" "}
+            {getTexto("Your own waiter")}
           </li>
         </ul>
         <div className="totalSection">
-          <span>US$250</span> for two people. Tax include
+          <span>US$250</span> {getTexto("for two people. Tax include")}
         </div>
       </Section>
       <Section
@@ -94,22 +97,23 @@ const Especialevents = () => {
         <ul className="itemsInclude">
           <li>
             <Imagen src="/img/specialevents/icon-rose.png" alt="icon rose" />
-            Rose petal decoration
+            {getTexto("Rose petal decoration")}
           </li>
           <li>
             <Imagen src="/img/specialevents/icon-wine.png" alt="icon wine" />
-            Bottle of Moët Chandon Brut champagne
+            {getTexto("Bottle of Moët Chandon Brut champagne")}
           </li>
           <li>
             <Imagen
               src="/img/specialevents/icon-strawberry.png"
               alt="icon strawberry"
             />
-            Chocolate-dipped strawberries
+            {getTexto("Chocolate-dipped strawberries")}
           </li>
         </ul>
         <div className="totalSection">
-          <span>US$125</span> tax include
+          <span>US$125</span>
+          {getTexto("tax include")}
         </div>
       </Section>
       <Section
@@ -124,29 +128,30 @@ const Especialevents = () => {
               src="/img/specialevents/icon-ballons.png"
               alt="icon ballons"
             />
-            Balloons{" "}
+            {getTexto("Balloons")}
           </li>
           <li>
             <Imagen src="/img/specialevents/icon-cake.png" alt="icon cake" />
-            Small cake
+            {getTexto("Small cake")}
           </li>
           <li>
             <Imagen
               src="/img/specialevents/icon-cellebration.png"
               alt="icon celebration"
             />
-            Happy birthday banner
+            {getTexto("Happy birthday banner")}
           </li>
           <li>
             <Imagen
               src="/img/specialevents/icon-bottle.png"
               alt="icon bottle"
             />
-            Bottle of sparkling wine
+            {getTexto("Bottle of sparkling wine")}
           </li>
         </ul>
         <div className="totalSection">
-          <span>US$125</span> tax include
+          <span>US$125</span>
+          {getTexto("tax include")}
         </div>
       </Section>
       <Formulario data={infoByPeople} />

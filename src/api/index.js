@@ -55,25 +55,14 @@ export function getTours() {
 }
 
 export function setDataToMC(params) {
-  if (getLanguage() === "en-US")
-    return axios({
-      method: "POST",
-      url: apiUrlSF + `/dtExtensions/${dtConverterTransaction}`,
-      data: params,
-      headers: {
-        "Content-Type": "application/json;charset=UTF-8",
-      },
-    });
-
-  // if (getLanguage() === "es-MX")
-  //   return axios({
-  //     method: "post",
-  //     url: apiUrlSF + `/dtExtensions/${dtConverterTransaction}`,
-  //     data: params,
-  //     headers: {
-  //       "Content-Type": "application/json;charset=UTF-8",
-  //     },
-  //   });
+  return axios({
+    method: "POST",
+    url: apiUrlSF + `/dtExtensions/${dtConverterTransaction}`,
+    data: params,
+    headers: {
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  });
 }
 //CRM/getWaves
 ///getTokenByServer
@@ -122,7 +111,7 @@ export function getInformationFromDEByPeopleID(id) {
 export function sendEmailMessage(params) {
   let data = {
     ...params,
-    SubscriberKey: "0037788icanul",
+    SubscriberKey: "icanul@royalresorts.com",
     EmailAddress: "icanul@royalresorts.com",
   };
   return axios.post(apiUrlSF + `/dtExtensions/${dtSpecialClients}`, data);

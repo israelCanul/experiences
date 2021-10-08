@@ -60,12 +60,11 @@ const Modal = ({ open = false, agree = true, toggleModal = () => {} }) => {
           <React.Fragment>
             <h3>{getTexto("Thank You")}!</h3>
             <p>
-              {getTexto("Your reservation has been placed")}.<br />
+              {getTexto("Your appointment has been confirmed")}.<br />
               {getTexto(
-                "Please read the details of your reservation found on your confirmation email"
+                "You will receive a coupon for your selected experience upon completing the presentation"
               )}
               <br />
-              {/* {`${getTexto("Email sent: ")} `} */}
               <br />
             </p>
             <p>{getTexto("We look forward to welcoming you soon")}!</p>
@@ -78,7 +77,6 @@ const Modal = ({ open = false, agree = true, toggleModal = () => {} }) => {
                 "Your Concierge will be in contact soon to help you with your vacation plans."
               )}
               <br />
-              {/* {`${getTexto("Email sent: ")} `} */}
               <br />
             </p>
           </React.Fragment>

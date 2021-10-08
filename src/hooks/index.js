@@ -6,7 +6,6 @@ import {
   setDataToMC,
   getParamsToContinue,
   getInformationFromDEByPeopleID,
-  getAccountFromCRM,
 } from "../api/index";
 import moment from "moment";
 import { getAllParamsFromUrl, formatingDateFromMC } from "../libs/helpers";
@@ -60,7 +59,7 @@ export function useParamsContinue() {
         cancel = true;
       };
     }
-  }, [data]);
+  }, [data, getParams]);
   return data;
 }
 export function useExperiences() {
@@ -157,7 +156,7 @@ export function useTourSelected(
         cancel = true;
       };
     }
-  }, [refresh]);
+  }, [refresh, tourSelected, idTemp]);
   return [tourSelected, setRefresh];
 }
 

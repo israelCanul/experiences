@@ -23,7 +23,7 @@ const ContinueSummary = ({ agree, setAgree, setTerms }) => {
     } else {
       setTerms(false);
     }
-  }, [terms, setAllTerms]);
+  }, [terms, setAllTerms, setTerms]);
 
   return (
     <div className="selectType">

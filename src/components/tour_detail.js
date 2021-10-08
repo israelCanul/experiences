@@ -1,5 +1,6 @@
 import Gallery from "./gallery/gallery";
 import { Fragment } from "react";
+import { getTexto } from "../libs/language";
 const TourDetail = ({ data = null }) => {
   let includes = "";
   if (data != null) {
@@ -30,7 +31,7 @@ const TourDetail = ({ data = null }) => {
           />
         </div>
         <div className="includes">
-          <h4>Includes</h4>
+          <h4>{getTexto("Includes")}</h4>
           <p>{includes}</p>
         </div>
         <div className="total">
@@ -44,7 +45,7 @@ const TourDetail = ({ data = null }) => {
             <li>
               <div className="description">
                 {/* Exclusive Limited Time Discount to Mr. **LAST NAME* */}
-                Exclusive Limited Time Discount
+                {getTexto("Exclusive Limited Time Discount")}
               </div>
               <div className="price">
                 -$
@@ -56,7 +57,7 @@ const TourDetail = ({ data = null }) => {
               </div>
             </li>
             <li>
-              <div className="description">Special Rate</div>
+              <div className="description">{getTexto("Special Rate")} </div>
               <div className="price totalPrice">
                 ${data.ConverterSpecialPrice} USD
               </div>

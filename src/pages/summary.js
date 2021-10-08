@@ -169,7 +169,7 @@ const Summary = () => {
               padding: "10px 0px",
             }}
           >
-            There are no Appointments
+            {getTexto("There are no Appointments")}
           </div>
         ) : (
           ""
@@ -190,7 +190,7 @@ const Summary = () => {
           celebration !== "" &&
           ((agree && book !== null) || !agree) ? (
             <a onClick={saveSelection.bind(this)} href="/">
-              CONTINUE
+              {getTexto("CONTINUE")}
             </a>
           ) : (
             ""
