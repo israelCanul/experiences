@@ -28,7 +28,7 @@ const Especialevents = () => {
       <div className="title_summary">
         <div className="description">
           <h3>
-            {infoByPeople !== null ? infoByPeople.Name : ""},{" "}
+            {infoByPeople !== null ? infoByPeople.Name : ""},
             {getTexto("Are you celebrating something special")}?
           </h3>
           <p>
