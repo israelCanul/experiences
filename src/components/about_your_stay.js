@@ -1,46 +1,49 @@
+import { getTexto } from "../libs/language";
 import RadioButton from "./radio_button";
 const AboutStay = ({ celebration = "", setCelebration }) => {
   return (
     <div className="celebrationsSection">
-      <h3>ABOUT YOUR STAY</h3>
+      <h3>{getTexto("ABOUT YOUR STAY")}</h3>
       <div className="celebrationsSection_wrapper">
-        <h4>Are you celebrating anything special during your stay?</h4>
+        <h4>
+          {getTexto("Are you celebrating anything special during your stay?")}
+        </h4>
         <div className="celebrations">
           <RadioButton
             active={celebration === "WEDDING"}
             callback={() => setCelebration("WEDDING")}
           >
-            Wedding Anniversary
+            {getTexto("Wedding Anniversary")}
           </RadioButton>
           <RadioButton
             active={celebration === "GRADUATION"}
             callback={() => setCelebration("GRADUATION")}
           >
-            Graduation
+            {getTexto("Graduation")}
           </RadioButton>
           <RadioButton
             active={celebration === "MARRIAGE"}
             callback={() => setCelebration("MARRIAGE")}
           >
-            Engagement
+            {getTexto("Engagement")}
           </RadioButton>
           <RadioButton
             active={celebration === "OTHER"}
             callback={() => setCelebration("OTHER")}
           >
-            Other
+            {getTexto("Other")}
           </RadioButton>
           <RadioButton
             active={celebration === "BIRTHDAY"}
             callback={() => setCelebration("BIRTHDAY")}
           >
-            Birthday
+            {getTexto("Birthday")}
           </RadioButton>
           <RadioButton
             active={celebration === "NOANSWER"}
             callback={() => setCelebration("NOANSWER")}
           >
-            No or I prefer not to answer
+            {getTexto("No or I prefer not to answer")}
           </RadioButton>
         </div>
       </div>

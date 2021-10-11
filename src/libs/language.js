@@ -106,4 +106,18 @@ textos = {
   "Bottle of sparkling wine": "Bottle of sparkling wine",
   "please fill out this form and one of our representatives will contact you":
     "please fill out this form and one of our representatives will contact you",
+  "ABOUT YOUR STAY": "ABOUT YOUR STAY",
+  "Are you celebrating anything special during your stay?":
+    "Are you celebrating anything special during your stay?",
+  "Wedding Anniversary": "Wedding Anniversary",
+  Graduation: "Graduation",
+  Engagement: "Engagement",
+  Other: "Other",
+  Birthday: "Birthday",
+  "No or I prefer not to answer": "No or I prefer not to answer",
+  "BOOK YOUR APPOINTMENT": "BOOK YOUR APPOINTMENT",
+  "As part of your vacation package, you will discover the Royal Resorts world and the amazing lifestyle and leisure benefits it offers you as a member":
+    "As part of your vacation package, you will discover the Royal Resorts world and the amazing lifestyle and leisure benefits it offers you as a member",
+  "Choose a time": "Choose a time",
+  "Choose a date": "Choose a date",
 };

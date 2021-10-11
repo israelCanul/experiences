@@ -43,7 +43,7 @@ const FormularioEvents = ({ data }) => {
     <div className="formulario">
       <div className="title">
         <h4>
-          {`%%Username%%, ${getTexto(
+          {`${data !== null ? data.Name : ""}, ${getTexto(
             "please fill out this form and one of our representatives will contact you"
           )}`}
         </h4>

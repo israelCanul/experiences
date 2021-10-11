@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import arrowdown from "../animations/arrow-down-thin.svg";
 import { Fragment } from "react";
 import { getCookieForm } from "../libs/cookieManager";
-import { getLanguage } from "../libs/language";
+import { getLanguage, getTexto } from "../libs/language";
 import { formatingDateFromCRM, getTimeInString } from "../libs/helpers";
 
 const Book = ({ setBook = () => {}, waves = null }) => {
@@ -70,19 +70,19 @@ const Book = ({ setBook = () => {}, waves = null }) => {
 
   return (
     <div className="booksection">
-      <h3>BOOK YOUR APPOINTMENT</h3>
+      <h3>{getTexto("BOOK YOUR APPOINTMENT")}</h3>
       <div className="booksection_wrapper">
         <p>
-          As part of your vacation package, you will discover the Royal Resorts
-          world and the amazing lifestyle and leisure benefits it offers you as
-          a member.
+          {getTexto(
+            "As part of your vacation package, you will discover the Royal Resorts world and the amazing lifestyle and leisure benefits it offers you as a member"
+          )}
         </p>
         <div className="datepickersection">
           {waves ? (
             <Fragment>
               <div className="date picker">
                 <DatePicker
-                  placeholderText="Choose a date"
+                  placeholderText={getTexto("Choose a date")}
                   selected={bookdate}
                   dateFormat="MM-dd-yyyy"
                   minDate={add(new Date(checkInDate), { days: 1 })}
@@ -99,7 +99,7 @@ const Book = ({ setBook = () => {}, waves = null }) => {
               <div className="time picker">
                 {booktime ? (
                   <DatePicker
-                    placeholderText="Choose a time"
+                    placeholderText={getTexto("Choose a time")}
                     selected={booktime}
                     onChange={(date) => setBooktime(date)}
                     showTimeSelect={true}
@@ -114,7 +114,7 @@ const Book = ({ setBook = () => {}, waves = null }) => {
                   />
                 ) : (
                   <DatePicker
-                    placeholderText="Choose a time"
+                    placeholderText={getTexto("Choose a time")}
                     selected={booktime}
                     onChange={(date) => setBooktime(date)}
                     showTimeSelect={true}
@@ -134,7 +134,7 @@ const Book = ({ setBook = () => {}, waves = null }) => {
             <Fragment>
               <div className="date picker">
                 <DatePicker
-                  placeholderText="Choose a date"
+                  placeholderText={getTexto("Choose a date")}
                   dateFormat="MM-dd-yyyy"
                   disabled
                   customInput={<MyInput />}
@@ -143,7 +143,7 @@ const Book = ({ setBook = () => {}, waves = null }) => {
               <div className="time picker">
                 <DatePicker
                   disabled
-                  placeholderText="Choose a time"
+                  placeholderText={getTexto("Choose a time")}
                   showTimeSelectOnly
                   timeIntervals={30}
                   timeCaption="Time"

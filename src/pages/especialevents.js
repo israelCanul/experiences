@@ -12,6 +12,7 @@ const Especialevents = () => {
   const [infoByPeople, setPeopleID] = useGetInfoAboutPeopleIDFromDT();
   const query = useQuery();
 
+  console.log(infoByPeople);
   useEffect(() => {
     if (query) {
       console.log(query);
@@ -27,7 +28,8 @@ const Especialevents = () => {
       <div className="title_summary">
         <div className="description">
           <h3>
-            %%USERNAME%%, {getTexto("Are you celebrating something special")}?
+            {infoByPeople !== null ? infoByPeople.Name : ""},{" "}
+            {getTexto("Are you celebrating something special")}?
           </h3>
           <p>
             {getTexto(
