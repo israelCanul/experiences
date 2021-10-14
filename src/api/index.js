@@ -98,7 +98,13 @@ export function getTourSelected(id) {
 }
 
 export function getWheater(m) {
-  return m === "f" ? axios.get(apiWheater) : axios.get(apiWheaterC);
+  let lang = "";
+  if (getLanguage() === "es-MX") {
+    lang = "&lang=es";
+  }
+  return m === "f"
+    ? axios.get(apiWheater + lang)
+    : axios.get(apiWheaterC + lang);
 }
 
 export function getInformationFromDEByPeopleID(id) {

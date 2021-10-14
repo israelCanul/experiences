@@ -165,7 +165,7 @@ export function useWheater() {
   useEffect(() => {
     let cancel = false;
     if (wheater == null) {
-      getWheater("f").then((response) => {
+      getWheater(getLanguage() === "en-US" ? "f" : "c").then((response) => {
         let res = response.data;
         let city = res.city.name + ", " + res.city.country;
         // setWheater({ city: city, listF: getListFromWeather(res) });
@@ -185,7 +185,7 @@ export function useWheater() {
         cancel = true;
       };
     }
-  });
+  }, [wheater]);
   return wheater;
 }
 

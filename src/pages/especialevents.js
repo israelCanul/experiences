@@ -88,7 +88,7 @@ const Especialevents = () => {
           </li>
         </ul>
         <div className="totalSection">
-          <span>US$250</span> {getTexto("for two people. Tax include")}
+          <span>US$250</span> {getTexto("for two people. Tax included")}
         </div>
       </Section>
       <Section
@@ -115,7 +115,7 @@ const Especialevents = () => {
         </ul>
         <div className="totalSection">
           <span>US$125</span>
-          {getTexto("tax include")}
+          {getTexto("tax included")}
         </div>
       </Section>
       <Section
@@ -153,7 +153,7 @@ const Especialevents = () => {
         </ul>
         <div className="totalSection">
           <span>US$125</span>
-          {getTexto("tax include")}
+          {getTexto("tax included")}
         </div>
       </Section>
       <Formulario data={infoByPeople} />

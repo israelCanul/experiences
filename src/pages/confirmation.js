@@ -21,7 +21,7 @@ const Confirmation = () => {
       <Header
         title={getTexto("This is what the weather is like in paradise today")}
         description={getTexto(
-          "You can check here the forecast for the next days"
+          "You can check the forecast here for the next few days"
         )}
       />
       <div className="weather">
@@ -31,9 +31,9 @@ const Confirmation = () => {
           city={getTexto("Cancun")}
         />
       </div>
-      <div className="actions">
+      {/* <div className="actions">
         <a href="/">{getTexto("preference center")}</a>
-      </div>
+      </div> */}
       <Modal
         agree={query && query.noagree ? query.noagree : false}
         open={modalOpen}

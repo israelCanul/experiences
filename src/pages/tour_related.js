@@ -77,8 +77,9 @@ const TourList = () => {
     return (
       <div className="tourlist">
         <Header
-          title="Select the experience that would best suit you 
-          during your stay"
+          title={getTexto(
+            "Select the experience that would best suit you during your stay"
+          )}
         />
         {renderExp}
         <div className="actions">
@@ -97,8 +98,9 @@ const TourList = () => {
   return (
     <div className="tourlist">
       <Header
-        title="Select the experience that would best suit you 
-        during your stay"
+        title={getTexto(
+          "Select the experience that would best suit you during your stay"
+        )}
       />
       <div style={{}}>
         <Skeleton />

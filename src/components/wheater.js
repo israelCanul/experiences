@@ -1,6 +1,7 @@
 import { folderIconsWeather } from "../libs/config";
 import { getLanguage } from "../libs/language";
 import { Fragment, useState } from "react";
+import "moment/locale/es-mx";
 const Weather = ({ daysF = [], daysC = [], city = "" }) => {
   const [selected, setSelected] = useState(0);
   let img = null;
@@ -26,6 +27,7 @@ const Weather = ({ daysF = [], daysC = [], city = "" }) => {
 
   let renderDays = [];
   if (thereAreInfo) {
+    console.log(daysF);
     renderDays = daysF.map((day, id) => {
       return (
         <div

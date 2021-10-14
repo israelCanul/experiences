@@ -31,7 +31,7 @@ const ContinueSummary = ({ agree, setAgree, setTerms }) => {
         <p>
           <span className="note">{getTexto("Note")}: </span>
           {getTexto(
-            "By choosing this Special Rate, I commit to attending a 120 minute preview of the new benefits Royal Resorts SIgnature Club has in store."
+            "By choosing this Special Rate, I agree to attend a 120 minute preview of the new benefits Royal Resorts SIgnature Club has in store."
           )}
         </p>
       </div>

@@ -157,9 +157,9 @@
           }
           .price {
             // background-color: blue;
-            width: 100px;
+            width: 150px;
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
             &.totalPrice {
               color: $blueRR;
