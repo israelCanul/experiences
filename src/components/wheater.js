@@ -27,7 +27,6 @@ const Weather = ({ daysF = [], daysC = [], city = "" }) => {
 
   let renderDays = [];
   if (thereAreInfo) {
-    console.log(daysF);
     renderDays = daysF.map((day, id) => {
       return (
         <div
