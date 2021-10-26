@@ -12,10 +12,8 @@ const Especialevents = () => {
   const [infoByPeople, setPeopleID] = useGetInfoAboutPeopleIDFromDT();
   const query = useQuery();
 
-  console.log(infoByPeople);
   useEffect(() => {
     if (query) {
-      console.log(query);
       if (query.peopleID) {
         setPeopleID(query.peopleID);
       }

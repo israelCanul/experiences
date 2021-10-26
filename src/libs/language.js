@@ -85,6 +85,8 @@ textos = {
   "Something was wrong": "Algo salió mal",
   "Exclusive Limited Time Discount": "Descuento Exclusivo por Tiempo Limitado",
   "Special Rate": "Tarifa Especial",
+  "Special price": "Precio Especial",
+  "Regular price": "Precio regular",
   Includes: "Incluye",
   "Are you celebrating something special": "¿Está celebrando algo especial?",
   "Delicious menu for two": "Delicioso menú para dos",

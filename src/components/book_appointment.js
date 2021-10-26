@@ -19,16 +19,11 @@ const Book = ({ setBook = () => {}, waves = null }) => {
       waves.map((wave) => {
         let waveDate = new Date(formatingDateFromCRM(wave.RRC_Date__c));
         let controlDate = bookdate;
-        // console.log(waveDate.toISOString());
-        // console.log(controlDate, controlDate.getTime());
-        // console.log(wave);
-        // console.log(waveDate, waveDate.getTime());
         if (
           waveDate.getDate() === controlDate.getDate() &&
           waveDate.getMonth() === controlDate.getMonth() &&
           waveDate.getFullYear() === controlDate.getFullYear()
         ) {
-          // console.log("aqui");
           let temWave = new Date(
             Date.parse(wave.RRC_Date__c + "T" + wave.RRC_Time__c)
           );
@@ -40,7 +35,6 @@ const Book = ({ setBook = () => {}, waves = null }) => {
         return true;
       });
       setFilter(newTimesForDate);
-      //console.log("olas", newTimesForDate);
     }
   }, [bookdate, waves]);
   var checkInDate = getCookieForm("checkInDate", getLanguage());
@@ -88,7 +82,6 @@ const Book = ({ setBook = () => {}, waves = null }) => {
                   minDate={add(new Date(checkInDate), { days: 1 })}
                   maxDate={subDays(new Date(checkOutDate), 1)}
                   onChange={(date) => {
-                    //console.log("aqui en date");
                     setBooktime(null);
                     setBookDate(date);
                     setBook(null);

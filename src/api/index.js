@@ -152,7 +152,6 @@ export async function setPreferencesToCRM(
           },
         })
           .then((response) => {
-            console.log(response);
             if (response.data.code >= 0) {
               callback();
             } else {

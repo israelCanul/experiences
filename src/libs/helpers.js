@@ -45,14 +45,12 @@ export function formatingDateFromMC(date) {
   if (date !== "") {
     let dateFormated = date.split(" ");
     dateFormated = dateFormated[0].split("/");
-    console.log(dateFormated);
     dateFormated =
       (dateFormated[0].length > 1 ? dateFormated[0] : "0" + dateFormated[0]) +
       "-" +
       (dateFormated[1].length > 1 ? dateFormated[1] : "0" + dateFormated[1]) +
       "-" +
       (dateFormated[2].length > 1 ? dateFormated[2] : "0" + dateFormated[2]);
-    console.log(dateFormated);
     return dateFormated;
   } else {
     return null;

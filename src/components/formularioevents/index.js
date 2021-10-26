@@ -30,11 +30,9 @@ const FormularioEvents = ({ data }) => {
       };
       sendEmailMessage(object)
         .then((response) => {
-          console.log(response);
           setError(false);
         })
         .catch((err) => {
-          console.log(err);
           setError(true);
         });
     }
