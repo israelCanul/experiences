@@ -22,11 +22,15 @@ export function makeID(params = []) {
 
 export function formatingDateToCRM(date) {
   if (date !== "") {
-    let dateFormated = date.split("/");
-    if (dateFormated.length === 1) {
-      dateFormated = date.split("-");
-    }
-    dateFormated = `${dateFormated[2]}-${dateFormated[0]}-${dateFormated[1]}`;
+    //let dateFormated = date.split("/");
+    let dateFormated = date;
+    // if (dateFormated.length === 1) {
+    //   dateFormated = date.split("-");
+    // }
+    //09/25/1990
+    console.log(dateFormated);
+    //dateFormated = `${dateFormated[2]}-${dateFormated[0]}-${dateFormated[1]}`;
+    dateFormated = `${date}`;
     return dateFormated;
   } else {
     return null;
@@ -43,14 +47,15 @@ export function formatingDateFromCRM(date) {
 }
 export function formatingDateFromMC(date) {
   if (date !== "") {
+    console.log(date);
     let dateFormated = date.split(" ");
     dateFormated = dateFormated[0].split("/");
     dateFormated =
+      (dateFormated[2].length > 1 ? dateFormated[2] : "0" + dateFormated[2]) +
+      "-" +
       (dateFormated[0].length > 1 ? dateFormated[0] : "0" + dateFormated[0]) +
       "-" +
-      (dateFormated[1].length > 1 ? dateFormated[1] : "0" + dateFormated[1]) +
-      "-" +
-      (dateFormated[2].length > 1 ? dateFormated[2] : "0" + dateFormated[2]);
+      (dateFormated[1].length > 1 ? dateFormated[1] : "0" + dateFormated[1]);
     return dateFormated;
   } else {
     return null;
