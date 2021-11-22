@@ -62,6 +62,20 @@ const Book = ({ setBook = () => {}, waves = null }) => {
     }
   }, [bookdate, booktime, setBook]);
 
+  const filterDate = (date) => {
+    if (waves !== null) {
+      let flag = false;
+      waves.map((wave) => {
+        let waveDate = new Date(formatingDateFromCRM(wave.RRC_Date__c));
+        if (waveDate.getTime() === date.getTime()) {
+          flag = waveDate.getTime() === date.getTime();
+        }
+        return true;
+      });
+      return flag;
+    }
+  };
+
   return (
     <div className="booksection">
       <h3>{getTexto("BOOK YOUR APPOINTMENT")}</h3>
@@ -79,13 +93,14 @@ const Book = ({ setBook = () => {}, waves = null }) => {
                   placeholderText={getTexto("Choose a date")}
                   selected={bookdate}
                   dateFormat="MM-dd-yyyy"
-                  minDate={add(new Date(checkInDate), { days: 1 })}
-                  maxDate={subDays(new Date(checkOutDate), 1)}
+                  minDate={add(new Date(checkInDate + "EST"), { days: 1 })}
+                  maxDate={subDays(new Date(checkOutDate + "EST"), 1)}
                   onChange={(date) => {
                     setBooktime(null);
                     setBookDate(date);
                     setBook(null);
                   }}
+                  filterDate={filterDate}
                   customInput={<MyInput />}
                 />
               </div>
