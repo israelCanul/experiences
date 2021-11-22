@@ -4,6 +4,7 @@ import {
   getWheater,
   getTourSelected,
   setDataToMC,
+  setTaskToCRM,
   getParamsToContinue,
   getInformationFromDEByPeopleID,
 } from "../api/index";
@@ -29,6 +30,25 @@ export function setDataMC(
       callbackF(err);
     });
 }
+
+export function setTask(
+  params = {},
+  callback = () => {},
+  callbackF = (e) => {}
+) {
+  setTaskToCRM(params)
+    .then((res) => {
+      if (parseInt(res.data.code) >= 0) {
+        callback();
+      } else {
+        callbackF(res.data.response);
+      }
+    })
+    .catch((err) => {
+      callbackF(err);
+    });
+}
+
 export function useParamsContinue() {
   const [data, setData] = useState(null);
   let getParams = getAllParamsFromUrl();

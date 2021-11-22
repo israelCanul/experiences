@@ -16,6 +16,7 @@ import {
 import {
   useTourSelected,
   setDataMC,
+  setTask,
   useQuery,
   useParamsContinue,
 } from "../hooks";
@@ -81,13 +82,30 @@ const Summary = () => {
     setDataMC(
       params,
       () => {
-        //funcion callback pra cuando el guardado sea exitoso por parte de MC
-        setloading(false);
+        //primer callback
         if (agree) {
-          window.location = "/confirmation";
+          // si todo fue ok y fue aceptado los terminos y condiciones
+          setTask(
+            {
+              stayId: getCookieForm("stayID", getLanguage()),
+              time: book.t,
+              date: book.d + " ",
+              tour: tourSelected.ConverterDesc,
+            },
+            () => {
+              //segundo callback
+              setloading(false);
+              window.location = "/confirmation";
+            },
+            (e) => {
+              setloading(false);
+            }
+          );
         } else {
+          setloading(false);
           window.location = "/confirmation?noagree=false";
         }
+        //funcion callback pra cuando el guardado sea exitoso por parte de MC
       },
       (err) => {
         setloading(false);

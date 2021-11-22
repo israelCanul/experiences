@@ -80,7 +80,6 @@ export async function getWavesFromCRM(params) {
         },
       });
     });
-
   return token;
 }
 
@@ -165,3 +164,38 @@ export async function setPreferencesToCRM(
     return token;
   }
 }
+
+export async function setTaskToCRM({ stayId, time, date, tour }) {
+  let dataRequest = {
+    stayId: stayId,
+    contactId: getCookieForm("contactID", getLanguage()),
+    date: date,
+    time: time,
+    tour: tour,
+  };
+
+  const answer = await axios({
+    method: "post",
+    url: apiUrlSF + `/CRM/newTask`,
+    data: dataRequest,
+    headers: {
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  });
+
+  return answer;
+}
+
+//http://desarrollo.apisalesforce.com/dtExtensions/RRC_Stay__c_Salesforce?fields=Id,OwnerId,RRC_LegacyStayId__c&q=RRC_LegacyStayId__c,equals,7407822//obtener datos de DE Sincronizada
+
+//Con los datos obtenidos.
+//http://desarrollo.apisalesforce.com/CRM/Task via POST
+// {
+//   "OwnerId": "005f2000009W63fAAC",// OwnerId peticion anterior
+//   "Status" : "Open", // fijo
+//   "Description" : "Appoinment Date : 2021-11-27 08:00",// texto proporcionado
+//   "Subject": "Tarea creada automaticamente por proceso de journey",//texto proporcionado
+//   "TaskSubtype": "Call",// fijo
+//   "WhoId": "003f200002oKy2XAAS",// cookie ContactID
+//   "WhatId": "a0h5w00000ofhlHAAQ"// id de la peticion anterior
+// }
