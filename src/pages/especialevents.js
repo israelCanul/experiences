@@ -22,11 +22,14 @@ const Especialevents = () => {
 
   return (
     <div className="summary">
-      <Header title="Special Events" description="Creating magical moments" />
+      <Header
+        title={getTexto("Special Events")}
+        description={getTexto("Creating magical moments")}
+      />
       <div className="title_summary">
         <div className="description">
           <h3>
-            {infoByPeople !== null ? infoByPeople.Name : ""},
+            {infoByPeople !== null ? infoByPeople.Name : ""},{" "}
             {getTexto("Are you celebrating something special")}?
           </h3>
           <p>
@@ -38,8 +41,10 @@ const Especialevents = () => {
       </div>
       <Section
         inverted
-        title="ROMANTIC DINNER"
-        description="From the beach to a waterfront terrace, a Romantic Dinner is the perfect way to celebrate an anniversary, birthday or engagement and whenever you want to add even more Mexican Caribbean magic to your vacation."
+        title={getTexto("ROMANTIC DINNER")}
+        description={getTexto(
+          "From the beach to a waterfront terrace, a Romantic Dinner is the perfect way to celebrate an anniversary, birthday or engagement and whenever you want to add even more Mexican Caribbean magic to your vacation."
+        )}
         gallery={[
           `romantic-dinner-1.jpg`,
           `romantic-dinner-2.jpg`,
@@ -90,8 +95,10 @@ const Especialevents = () => {
         </div>
       </Section>
       <Section
-        title="ROMANTIC ROOM DECOR"
-        description="Celebrate your love, a touch of luxury for your room."
+        title={getTexto("ROMANTIC ROOM DECOR")}
+        description={getTexto(
+          "Celebrate your love, a touch of luxury for your room."
+        )}
         img={`${urlImagenes}room-decor.jpg`}
       >
         <ul className="itemsInclude">
@@ -112,13 +119,13 @@ const Especialevents = () => {
           </li>
         </ul>
         <div className="totalSection">
-          <span>US$125</span>
-          {getTexto("tax included")}
+          <span>US$125 </span>
+          {getTexto("Tax included")}
         </div>
       </Section>
       <Section
-        title="BIRTHDAY DECORATION"
-        description="A birthday surprise for someone special."
+        title={getTexto("BIRTHDAY DECORATION")}
+        description={getTexto("A birthday surprise for someone special.")}
         inverted
         img={`${urlImagenes}birthday-decoration.jpg`}
       >
@@ -150,8 +157,8 @@ const Especialevents = () => {
           </li>
         </ul>
         <div className="totalSection">
-          <span>US$125</span>
-          {getTexto("tax included")}
+          <span>US$125 </span>
+          {getTexto("Tax included")}
         </div>
       </Section>
       <Formulario data={infoByPeople} />

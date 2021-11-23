@@ -50,13 +50,13 @@ const FormularioEvents = ({ data }) => {
         <div className="dataform">
           <Select
             onChange={(selectedOptions) => setSelectedP(selectedOptions)}
-            placeholder="Choose a package"
+            placeholder={getTexto("Choose a package")}
             options={options}
           />
         </div>
         <div className="dataform date">
           <DatePicker
-            placeholderText="Choose a date"
+            placeholderText={getTexto("Choose a date")}
             selected={bookdate}
             dateFormat="MM-dd-yyyy"
             minDate={add(new Date(), { days: 1 })}
@@ -69,7 +69,7 @@ const FormularioEvents = ({ data }) => {
       </div>
       <div className="actions active">
         <a onClick={onClick} href="/">
-          Send
+          {getTexto("Send")}
         </a>
       </div>
       {error !== null && error === false ? (
@@ -88,7 +88,7 @@ const FormularioEvents = ({ data }) => {
 };
 const MyInput = forwardRef(({ value, onClick, placeholder }, ref) => (
   <button className="custom-input" onClick={onClick} ref={ref}>
-    <span>{value ? value : placeholder}</span>
+    <span style={{ fontSize: "16px" }}>{value ? value : placeholder}</span>
     <img width="16" height="16" src={arrowdown} alt="arrow down" />
   </button>
 ));

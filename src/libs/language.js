@@ -128,4 +128,19 @@ textos = {
   "Thank you for your reply": "Gracias por su respuesta",
   "Your Concierge will be in contact soon to help you with your vacation plans.":
     "Su Concierge se pondrá en contacto pronto para ayudarlo con sus planes de vacaciones.",
+  "ROMANTIC DINNER": "ROMANTIC DINNER",
+  "From the beach to a waterfront terrace, a Romantic Dinner is the perfect way to celebrate an anniversary, birthday or engagement and whenever you want to add even more Mexican Caribbean magic to your vacation.":
+    "ESP From the beach to a waterfront terrace, a Romantic Dinner is the perfect way to celebrate an anniversary, birthday or engagement and whenever you want to add even more Mexican Caribbean magic to your vacation.",
+  "ROMANTIC ROOM DECOR": "ROMANTIC ROOM DECOR ESP",
+  "Celebrate your love, a touch of luxury for your room.":
+    "Celebrate your love, a touch of luxury for your room.",
+  "BIRTHDAY DECORATION": "BIRTHDAY DECORATION",
+  "A birthday surprise for someone special.":
+    "A birthday surprise for someone special.",
+  "Tax included": "Impuesto incluido",
+  "Choose a package": "Choose a package",
+  "Choose a date": "Choose a date",
+  Send: "Send",
+  "Special Events": "Special Events",
+  "Creating magical moments": "Creating magical moments",
 };
