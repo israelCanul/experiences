@@ -1,10 +1,12 @@
 import style from "../scss/Experiences.module.scss";
 import { Link } from "react-router-dom";
-import { getTexto } from "../libs/language";
-import { saveExperiencesSelected } from "../libs/cookieManager";
+import { getTexto, getLanguage } from "../libs/language";
+import { saveExperiencesSelected, getCookieForm } from "../libs/cookieManager";
 import { useExperiences } from "../hooks/index";
 import Experience from "./experience_item";
 import { useEffect, useState } from "react";
+import AboutStay from "./about_your_stay";
+import moment from "moment";
 const ExperiencesList = () => {
   const [selecteds, setSelecteds] = useState([]);
   const Experiences = useExperiences();
@@ -74,14 +76,33 @@ const ExperiencesList = () => {
     }
   }
 
+  let renderContinue = () => {
+    let checkIn = moment(
+      getCookieForm("checkInDate", getLanguage()),
+      "YYYY-MM-DD"
+    );
+    let checkout = moment(
+      getCookieForm("checkOutDate", getLanguage()),
+      "YYYY-MM-DD"
+    );
+    let nights = checkout.diff(checkIn, "days");
+    if (nights < 4) {
+      return <Modal open={true} />;
+    } else {
+      return (
+        <Link to="/experiences" state={{ search: window.location.search }}>
+          {getTexto("Continue")}
+        </Link>
+      );
+    }
+  };
+
   return (
     <div className={style.ExperiencesList}>
       {renderExperiences}
       <div className={style.actions}>
         {selecteds.length > 0 ? (
-          <Link to="/experiences" state={{ search: window.location.search }}>
-            {getTexto("Continue")}
-          </Link>
+          renderContinue()
         ) : (
           <a
             href="/"
@@ -99,3 +120,24 @@ const ExperiencesList = () => {
 };
 
 export default ExperiencesList;
+
+const Modal = ({ open = true, toggleModal = () => {} }) => {
+  return (
+    <div className={`modal ${open === true ? "active" : ""}`}>
+      <div className="modal_background"></div>
+      <div className="modal_contenido">
+        <div className="modal_action">
+          <div
+            className="close"
+            onClick={() => {
+              toggleModal(false);
+            }}
+          ></div>
+        </div>
+        <>
+          <AboutStay />
+        </>
+      </div>
+    </div>
+  );
+};
