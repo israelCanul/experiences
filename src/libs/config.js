@@ -40,3 +40,8 @@ export const dtSpecialClients =
     : "EE7BDFA3-C494-4945-B618-439A80C7EFB0";
 export const urlImagenes = "https://experiences.royalresorts.com/images/";
 // https://experiences.royalresorts.com/images/birthday-decoration.jpg
+
+export const emailSpecialEvents =
+  process.env.NODE_ENV !== "production"
+    ? "icanul@royalresorts.com"
+    : "specialevents@royalresorts.com";

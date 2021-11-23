@@ -8,6 +8,7 @@ import {
   dtConverter,
   dtAccountSalesforceSync,
   dtSpecialClients,
+  emailSpecialEvents,
 } from "../libs/config";
 import { getExperiencesSelected, getCookieForm } from "../libs/cookieManager";
 import { getLanguage } from "../libs/language";
@@ -116,8 +117,8 @@ export function getInformationFromDEByPeopleID(id) {
 export function sendEmailMessage(params) {
   let data = {
     ...params,
-    SubscriberKey: "icanul@royalresorts.com",
-    EmailAddress: "icanul@royalresorts.com",
+    SubscriberKey: emailSpecialEvents,
+    EmailAddress: emailSpecialEvents,
   };
   return axios.post(apiUrlSF + `/dtExtensions/${dtSpecialClients}`, data);
 }
