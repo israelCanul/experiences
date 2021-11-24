@@ -128,19 +128,19 @@ textos = {
   "Thank you for your reply": "Gracias por su respuesta",
   "Your Concierge will be in contact soon to help you with your vacation plans.":
     "Su Concierge se pondrá en contacto pronto para ayudarlo con sus planes de vacaciones.",
-  "ROMANTIC DINNER": "ROMANTIC DINNER",
+  "ROMANTIC DINNER": "CENA ROMÁNTICA",
   "From the beach to a waterfront terrace, a Romantic Dinner is the perfect way to celebrate an anniversary, birthday or engagement and whenever you want to add even more Mexican Caribbean magic to your vacation.":
-    "ESP From the beach to a waterfront terrace, a Romantic Dinner is the perfect way to celebrate an anniversary, birthday or engagement and whenever you want to add even more Mexican Caribbean magic to your vacation.",
-  "ROMANTIC ROOM DECOR": "ROMANTIC ROOM DECOR ESP",
+    "Desde la playa hasta la terraza frente al mar, una Cena Romántica es la manera perfecta de celebrar un aniversario, cumpleaños o compromiso y cuando desee agregar aún más magia del Caribe mexicano a sus vacaciones.",
+  "ROMANTIC ROOM DECOR": "DECORADO ROMANTICO DE LA HABITACIÓN",
   "Celebrate your love, a touch of luxury for your room.":
-    "Celebrate your love, a touch of luxury for your room.",
-  "BIRTHDAY DECORATION": "BIRTHDAY DECORATION",
+    "Celebre su amor con un toque de lujo en su habitación.",
+  "BIRTHDAY DECORATION": "DECORACIÓN DE CUMPLEAÑOS",
   "A birthday surprise for someone special.":
-    "A birthday surprise for someone special.",
+    "Una sorpresa de cumpleaños para alguien especial.",
   "Tax included": "Impuesto incluido",
-  "Choose a package": "Choose a package",
-  "Choose a date": "Choose a date",
-  Send: "Send",
-  "Special Events": "Special Events",
-  "Creating magical moments": "Creating magical moments",
+  "Choose a package": "Elija un paquete",
+  "Choose a date": "Elija una fecha",
+  Send: "Enviar",
+  "Special Events": "Eventos Especiales",
+  "Creating magical moments": "Creando momentos mágicos",
 };
