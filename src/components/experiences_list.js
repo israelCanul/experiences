@@ -7,7 +7,7 @@ import Experience from "./experience_item";
 import { useEffect, useState } from "react";
 import AboutStay from "./about_your_stay";
 import { useHistory } from "react-router-dom";
-import { setPreferencesToCRM } from "../api/index";
+import { setPreferencesToCRM, setTaskToCRM } from "../api/index";
 
 const ExperiencesList = () => {
   let history = useHistory();
@@ -83,7 +83,7 @@ const ExperiencesList = () => {
   }
 
   let renderContinue = () => {
-    if (getCookieForm("nights", getLanguage())) {
+    if (getCookieForm("nights", getLanguage()) < 4) {
       return (
         <a
           onClick={(e) => {
@@ -108,15 +108,26 @@ const ExperiencesList = () => {
     e.preventDefault();
     console.log("llego aqui");
     console.log(celebration);
-    // setPreferencesToCRM(
-    //   () => {
-    //     console.log("Completado");
-    //     //history.push("/summary");
-    //   },
-    //   (err) => {
-    //     setError(err);
-    //   }
-    // );
+    setPreferencesToCRM(
+      () => {
+        //     console.log("Completado");
+        let objToTask = {};
+        setTaskToCRM(objToTask)
+          .then((res) => {
+            if (parseInt(res.data.code) >= 0) {
+              history.push("/summary");
+            } else {
+              setError("");
+            }
+          })
+          .catch((err) => {
+            setError(err);
+          });
+      },
+      (err) => {
+        setError(err);
+      }
+    );
   };
 
   return (

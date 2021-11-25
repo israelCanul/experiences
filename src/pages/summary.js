@@ -87,10 +87,10 @@ const Summary = () => {
           // si todo fue ok y fue aceptado los terminos y condiciones
           setTask(
             {
-              stayId: getCookieForm("stayID", getLanguage()),
               time: book.t,
               date: book.d + " ",
               tour: tourSelected.ConverterDesc,
+              celebration: celebration,
             },
             () => {
               //segundo callback

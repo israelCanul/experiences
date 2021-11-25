@@ -155,7 +155,7 @@ export async function setPreferencesToCRM(
             if (response.data.code >= 0) {
               callback();
             } else {
-              callbackE(response.data.Error);
+              callbackE(response.data.data);
             }
           })
           .catch((Err) => {
@@ -166,15 +166,22 @@ export async function setPreferencesToCRM(
   }
 }
 
-export async function setTaskToCRM({ stayId, time, date, tour }) {
+export async function setTaskToCRM({
+  time = null,
+  date = null,
+  tour = null,
+  nights = null,
+  celebration = null,
+}) {
   let dataRequest = {
-    stayId: stayId,
+    stayId: getCookieForm("stayID", getLanguage()),
     contactId: getCookieForm("contactID", getLanguage()),
-    date: date,
-    time: time,
-    tour: tour,
+    date: date ? date : "",
+    time: time ? time : "",
+    tour: tour ? tour : "",
+    nights: nights ? nights : "",
+    celebration: celebration ? celebration : "",
   };
-
   const answer = await axios({
     method: "post",
     url: apiUrlSF + `/CRM/newTask`,
@@ -183,7 +190,6 @@ export async function setTaskToCRM({ stayId, time, date, tour }) {
       "Content-Type": "application/json;charset=UTF-8",
     },
   });
-
   return answer;
 }
 
