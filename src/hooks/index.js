@@ -116,6 +116,12 @@ export function useQuery() {
   const [params, setParams] = useState();
   useEffect(() => {
     const parametros = getAllParamsFromUrl();
+    if (parametros.checkInDate && parametros.checkOutDate) {
+      let checkIn = moment(parametros.checkInDate, "YYYY-MM-DD");
+      let checkout = moment(parametros.checkOutDate, "YYYY-MM-DD");
+      let nights = checkout.diff(checkIn, "days");
+      parametros["nights"] = nights;
+    }
     setParams(parametros);
   }, []);
   return params;

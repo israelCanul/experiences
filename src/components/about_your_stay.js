@@ -1,6 +1,11 @@
 import { getTexto } from "../libs/language";
 import RadioButton from "./radio_button";
-const AboutStay = ({ celebration = "", setCelebration }) => {
+const AboutStay = ({
+  celebration = "",
+  setCelebration = (cel) => {},
+  isNotAplicable = null,
+  continueHandler = () => {},
+}) => {
   return (
     <div className="celebrationsSection">
       <h3>{getTexto("ABOUT YOUR STAY")}</h3>
@@ -47,6 +52,21 @@ const AboutStay = ({ celebration = "", setCelebration }) => {
           </RadioButton>
         </div>
       </div>
+      {isNotAplicable !== null ? (
+        <div className="action">
+          {celebration === "" ? (
+            <a className="inactive" href="/">
+              {getTexto("Continue")}
+            </a>
+          ) : (
+            <a onClick={continueHandler} href="/">
+              {getTexto("Continue")}
+            </a>
+          )}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

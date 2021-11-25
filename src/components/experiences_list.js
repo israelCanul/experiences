@@ -6,9 +6,15 @@ import { useExperiences } from "../hooks/index";
 import Experience from "./experience_item";
 import { useEffect, useState } from "react";
 import AboutStay from "./about_your_stay";
-import moment from "moment";
+import { useHistory } from "react-router-dom";
+import { setPreferencesToCRM } from "../api/index";
+
 const ExperiencesList = () => {
+  let history = useHistory();
   const [selecteds, setSelecteds] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [error, setError] = useState("");
+  const [celebration, setCelebration] = useState("");
   const Experiences = useExperiences();
   let renderExperiences = [];
 
@@ -77,17 +83,18 @@ const ExperiencesList = () => {
   }
 
   let renderContinue = () => {
-    let checkIn = moment(
-      getCookieForm("checkInDate", getLanguage()),
-      "YYYY-MM-DD"
-    );
-    let checkout = moment(
-      getCookieForm("checkOutDate", getLanguage()),
-      "YYYY-MM-DD"
-    );
-    let nights = checkout.diff(checkIn, "days");
-    if (nights < 4) {
-      return <Modal open={true} />;
+    if (getCookieForm("nights", getLanguage())) {
+      return (
+        <a
+          onClick={(e) => {
+            e.preventDefault();
+            setModal(true);
+          }}
+          href="/"
+        >
+          {getTexto("Continue")}
+        </a>
+      );
     } else {
       return (
         <Link to="/experiences" state={{ search: window.location.search }}>
@@ -95,6 +102,21 @@ const ExperiencesList = () => {
         </Link>
       );
     }
+  };
+
+  let continueHandlerIn4Nights = (e) => {
+    e.preventDefault();
+    console.log("llego aqui");
+    console.log(celebration);
+    // setPreferencesToCRM(
+    //   () => {
+    //     console.log("Completado");
+    //     //history.push("/summary");
+    //   },
+    //   (err) => {
+    //     setError(err);
+    //   }
+    // );
   };
 
   return (
@@ -115,13 +137,29 @@ const ExperiencesList = () => {
           </a>
         )}
       </div>
+      <Modal
+        open={modal}
+        toggleModal={setModal}
+        error={error}
+        continueHandler={continueHandlerIn4Nights}
+        setCelebration={setCelebration}
+        celebration={celebration}
+      />
+      ;
     </div>
   );
 };
 
 export default ExperiencesList;
 
-const Modal = ({ open = true, toggleModal = () => {} }) => {
+const Modal = ({
+  open = true,
+  toggleModal = () => {},
+  error,
+  continueHandler = () => {},
+  setCelebration,
+  celebration,
+}) => {
   return (
     <div className={`modal ${open === true ? "active" : ""}`}>
       <div className="modal_background"></div>
@@ -135,8 +173,15 @@ const Modal = ({ open = true, toggleModal = () => {} }) => {
           ></div>
         </div>
         <>
-          <AboutStay />
+          <AboutStay
+            isNotAplicable={true}
+            setCelebration={setCelebration}
+            continueHandler={continueHandler}
+            celebration={celebration}
+          />
         </>
+
+        <p className="error">{error}</p>
       </div>
     </div>
   );
