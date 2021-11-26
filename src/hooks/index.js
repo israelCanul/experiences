@@ -23,7 +23,7 @@ export function setDataMC(
       if (parseInt(res.data.errorCode) >= 0) {
         callback();
       } else {
-        callbackF(res.data.response);
+        callbackF(res.data.errorDescription);
       }
     })
     .catch((err) => {

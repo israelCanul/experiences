@@ -179,7 +179,7 @@ export async function setTaskToCRM({
     date: date ? date : "",
     time: time ? time : "",
     tour: tour ? tour : "",
-    nights: nights ? nights : "",
+    nights: getCookieForm("nights", getLanguage()),
     celebration: celebration ? celebration : "",
   };
   const answer = await axios({

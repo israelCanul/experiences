@@ -111,13 +111,13 @@ const ExperiencesList = () => {
     setPreferencesToCRM(
       () => {
         //     console.log("Completado");
-        let objToTask = {};
+        let objToTask = { celebration: celebration };
         setTaskToCRM(objToTask)
           .then((res) => {
             if (parseInt(res.data.code) >= 0) {
-              history.push("/summary");
+              history.push("/confirmation?noagree=false");
             } else {
-              setError("");
+              setError(res.data.data);
             }
           })
           .catch((err) => {

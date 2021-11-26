@@ -1,7 +1,7 @@
 export const apiUrl = process.env.NODE_ENV !== "production" ? "" : "";
 export const apiUrlSF =
   process.env.NODE_ENV !== "production"
-    ? "https://apidw.royalresorts.mobi"
+    ? "http://desarrollo.apisalesforce.com"
     : "https://apidw.royalresorts.mobi";
 export const apiWheater =
   process.env.NODE_ENV !== "production"
@@ -22,8 +22,8 @@ export const dtConverterClass =
 
 export const dtConverterTransaction =
   process.env.NODE_ENV !== "production"
-    ? "54EEEFCA-359F-46D1-9995-B5C2550C119F"
-    : "54EEEFCA-359F-46D1-9995-B5C2550C119F";
+    ? "8B94C4BE-B760-4F13-9B98-71AA6BEAC219"
+    : "8B94C4BE-B760-4F13-9B98-71AA6BEAC219";
 
 export const dtConverter =
   process.env.NODE_ENV !== "production"
