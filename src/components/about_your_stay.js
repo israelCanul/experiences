@@ -8,11 +8,22 @@ const AboutStay = ({
 }) => {
   return (
     <div className="celebrationsSection">
-      <h3>{getTexto("ABOUT YOUR STAY")}</h3>
+      {isNotAplicable === null ? <h3>{getTexto("ABOUT YOUR STAY")}</h3> : ""}
       <div className="celebrationsSection_wrapper">
-        <h4>
-          {getTexto("Are you celebrating anything special during your stay?")}
-        </h4>
+        {isNotAplicable === null ? (
+          <h4>
+            {getTexto("Are you celebrating anything special during your stay?")}
+          </h4>
+        ) : (
+          <>
+            <h3 style={{ textAlign: "left" }}>{getTexto("ABOUT YOUR STAY")}</h3>
+            <h4 style={{ textAlign: "left" }}>
+              {getTexto(
+                "Are you celebrating anything special during your stay?"
+              )}
+            </h4>
+          </>
+        )}
         <div className="celebrations">
           <RadioButton
             active={celebration === "WEDDING"}
