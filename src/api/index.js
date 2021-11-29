@@ -184,7 +184,7 @@ export async function setTaskToCRM({
   };
   const answer = await axios({
     method: "post",
-    url: apiUrlSF + `/CRM/newTask`,
+    url: apiUrlSF + `/CRM/newTask2`,
     data: dataRequest,
     headers: {
       "Content-Type": "application/json;charset=UTF-8",

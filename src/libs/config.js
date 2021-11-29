@@ -1,7 +1,7 @@
 export const apiUrl = process.env.NODE_ENV !== "production" ? "" : "";
 export const apiUrlSF =
   process.env.NODE_ENV !== "production"
-    ? "http://desarrollo.apisalesforce.com"
+    ? "https://apidw.royalresorts.mobi"
     : "https://apidw.royalresorts.mobi";
 export const apiWheater =
   process.env.NODE_ENV !== "production"
