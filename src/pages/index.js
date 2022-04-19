@@ -12,6 +12,7 @@ const Home = ({ params }) => {
     <Fragment>
       <div className="home">
         <Header
+          templateP={params.template}
           title={getTexto(
             "Please click on the experiences that would best suit you during your stay"
           )}
@@ -19,7 +20,7 @@ const Home = ({ params }) => {
             "Choose up to three activities from the selection below"
           )}
         />
-        <ExperiencesList />
+        <ExperiencesList templateP={params.template} />
       </div>
     </Fragment>
   );

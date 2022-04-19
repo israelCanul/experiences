@@ -1,4 +1,20 @@
 @import "helpers";
+
+.sectionContainerR1 {
+  background-color: $blueR1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 5px;
+  // height: $headerMin;
+  @include desktop {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    // height: $headerMax;
+  }
+}
 .sectionContainer {
   background-color: $blueRR;
   display: flex;
@@ -13,37 +29,65 @@
     justify-content: center;
     // height: $headerMax;
   }
-  .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    img {
-      max-width: 100%;
-      // background-color: red;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  img {
+    max-width: 100%;
+    // background-color: red;
+  }
+}
+.texto {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  padding: 10px 10px 10px 10px;
+  h2 {
+    @include mobile {
+      font-size: 1rem;
     }
   }
-  .texto {
-    color: white;
-    font-family: "Montserrat", sans-serif;
-    padding: 10px 10px 10px 10px;
-    h2 {
-      @include mobile {
-        font-size: 1rem;
-      }
+  p {
+    @include mobile {
+      font-size: 0.9rem;
     }
-    p {
-      @include mobile {
-        font-size: 0.9rem;
-      }
+  }
+  h2,
+  p {
+    text-align: center;
+    margin: 0px;
+    @include desktop {
+      text-align: initial;
     }
-    h2,
-    p {
-      text-align: center;
-      margin: 0px;
-      @include desktop {
-        text-align: initial;
-      }
+  }
+}
+.textoR1 {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  padding: 10px 10px 10px 10px;
+  h2 {
+    @include mobile {
+      font-size: 1rem;
     }
+  }
+  p {
+    @include mobile {
+      font-size: 0.9rem;
+    }
+  }
+  h2,
+  p {
+    text-align: center;
+    margin: 0px;
+   
+    @include desktop {
+      text-align: initial;
+    }
+  }
+  p{
+    color: $naranja;
   }
 }

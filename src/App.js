@@ -1,5 +1,5 @@
-import "./scss/app.scss";
 import { Router, Switch, Route, Redirect } from "react-router-dom";
+import "./scss/app.scss";
 import React, { Suspense } from "react";
 import { useQuery } from "./hooks";
 import { createBrowserHistory } from "history";

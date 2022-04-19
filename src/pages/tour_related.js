@@ -14,6 +14,9 @@ import {
 const TourList = () => {
   const tours = useTours();
   let history = useHistory();
+
+  let template = getCookieForm("template", getLanguage());
+  console.log(template);
   //cambio de title
   let document = Document;
   document.title = "Tours";
@@ -64,7 +67,11 @@ const TourList = () => {
       return "";
     });
     return (
-      <div className="tourlist">
+      <div
+        className={`tourlist ${
+          template != null && template === "R1" ? "R1Template" : ""
+        }`}
+      >
         <Header
           title={getTexto(
             "Select the experience that would best suit you during your stay"

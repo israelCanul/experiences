@@ -1,5 +1,8 @@
 @import "helpers";
 .tourlist {
+  background-color: white;
+  
+  
   .toursResult {
     width: 100%;
     margin-bottom: 20px;
@@ -147,6 +150,49 @@
       -moz-border-radius: 20px;
       -ms-border-radius: 20px;
       -o-border-radius: 20px;
+    }
+  }
+  &.R1Template{
+    .actions {
+      background-color: $blueR1;
+      a{
+        color: $naranja;
+        border-radius:5px !important      ;
+        -webkit-border-radius:5px !important      ;
+        -moz-border-radius:5px !important      ;
+        -ms-border-radius:5px !important      ;
+        -o-border-radius:5px !important      ;
+}
+    }
+    .tour{
+      .info{
+        img{
+          border-radius: 10px !important;
+          -webkit-border-radius: 10px !important;
+          -moz-border-radius: 10px !important;
+          -ms-border-radius: 10px !important;
+          -o-border-radius: 10px !important;
+        }
+        .price_item {
+          .special{
+            color: $naranja !important;
+          }
+        }
+
+      }
+      a{
+        &.select{
+          color: $naranja !important;
+          background-color: white !important;
+          border-color: $naranja;
+          border: 2px solid $naranja;
+          border-radius: 5px !important;
+          -webkit-border-radius: 5px !important;
+          -moz-border-radius: 5px !important;
+          -ms-border-radius: 5px !important;
+          -o-border-radius: 5px !important;
+}
+      }
     }
   }
 }

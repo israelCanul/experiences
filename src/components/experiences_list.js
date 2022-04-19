@@ -9,7 +9,7 @@ import AboutStay from "./about_your_stay";
 import { useHistory } from "react-router-dom";
 import { setPreferencesToCRM, setTaskToCRM } from "../api/index";
 
-const ExperiencesList = () => {
+const ExperiencesList = ({ templateP = "RR" }) => {
   let history = useHistory();
   const [selecteds, setSelecteds] = useState([]);
   const [modal, setModal] = useState(false);
@@ -106,8 +106,6 @@ const ExperiencesList = () => {
 
   let continueHandlerIn4Nights = (e) => {
     e.preventDefault();
-    console.log("llego aqui");
-    console.log(celebration);
     setPreferencesToCRM(
       () => {
         //     console.log("Completado");
@@ -130,10 +128,19 @@ const ExperiencesList = () => {
     );
   };
 
+  console.log(templateP);
   return (
-    <div className={style.ExperiencesList}>
+    <div
+      className={`${style.ExperiencesList} ${
+        templateP === "R1" ? style.ExperiencesListR1 : ""
+      }`}
+    >
       {renderExperiences}
-      <div className={style.actions}>
+      <div
+        className={`${style.actions} ${
+          templateP === "R1" ? style.actionsR1 : ""
+        }`}
+      >
         {selecteds.length > 0 ? (
           renderContinue()
         ) : (

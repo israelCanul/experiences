@@ -1,5 +1,8 @@
 @import "helpers";
 @import "animations";
+.ExperiencesListR1 {
+  background-color: $blueR1 !important;
+}
 .ExperiencesList {
   width: 100vw;
   height: auto;
@@ -19,93 +22,104 @@
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 1fr 1fr auto;
   }
-  .experiencexqueleton {
-    background-size: 400% 400% !important;
+}
+.experiencexqueleton {
+  background-size: 400% 400% !important;
+}
+.experience {
+  grid-column: auto/span 1;
+  grid-row: auto/span 1;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include mobile {
+    height: 150px;
   }
-  .experience {
-    grid-column: auto/span 1;
-    grid-row: auto/span 1;
+  picture {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    @include mobile {
-      height: 150px;
-    }
-    picture {
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      img {
-        max-width: 100%;
-        position: relative;
-        width: 100%;
-        height: auto;
-      }
-    }
-    .icon {
+    img {
+      max-width: 100%;
       position: relative;
-      width: 40px;
+      width: 100%;
       height: auto;
-    }
-    .small {
-      width: 20px !important;
-    }
-    p {
-      color: white;
-      z-index: 2;
-      font-family: $monse;
-      text-transform: uppercase;
     }
   }
-  .actions {
-    grid-column: auto/span 2;
-    grid-row: auto/span 1;
-    background-color: $blueRR;
-    height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @include tablet {
-      grid-column: auto/span 3;
-      grid-row: auto/span 1;
-    }
-    @include desktop {
-      height: 50px;
-      grid-column: auto/span 6;
-      grid-row: auto/span 1;
-    }
-    text-align: center;
+  .icon {
+    position: relative;
+    width: 40px;
+    height: auto;
+  }
+  .small {
+    width: 20px !important;
+  }
+  p {
+    color: white;
+    z-index: 2;
+    font-family: $monse;
+    text-transform: uppercase;
+  }
+}
+.actionsR1 {
+  background-color: $blueR1 !important;
     a {
-      //display: block;
-      text-transform: uppercase;
-      width: 200px;
-      height: auto;
-      padding: 6px 0px;
-      color: $grayRR;
-      text-decoration: none;
-      font-family: $monse;
-      font-size: 16px;
-      color: $blueRR;
-      font-weight: bold;
-      background-color: $grayRR;
-      border-radius: 20px;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -ms-border-radius: 20px;
-      -o-border-radius: 20px;
-    }
-    .action_disabled {
-      color: $grayTextRR;
-    }
+      color: $naranja !important;
+      border-radius:5px !important ;
+      -webkit-border-radius:5px !important ;
+      -moz-border-radius:5px !important ;
+      -ms-border-radius:5px !important ;
+      -o-border-radius:5px !important ;
+  }
+}
+.actions {
+  grid-column: auto/span 2;
+  grid-row: auto/span 1;
+  background-color: $blueRR;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include tablet {
+    grid-column: auto/span 3;
+    grid-row: auto/span 1;
+  }
+  @include desktop {
+    height: 50px;
+    grid-column: auto/span 6;
+    grid-row: auto/span 1;
+  }
+  text-align: center;
+  a {
+    //display: block;
+    text-transform: uppercase;
+    width: 200px;
+    height: auto;
+    padding: 6px 0px;
+    color: $grayRR;
+    text-decoration: none;
+    font-family: $monse;
+    font-size: 16px;
+    color: $blueRR;
+    font-weight: bold;
+    background-color: $grayRR;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+  }
+  .action_disabled {
+    color: $grayTextRR;
   }
 }
