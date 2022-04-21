@@ -1,6 +1,9 @@
 $blueRR: #00377c;
 $grayTextRR: rgb(117, 118, 120);
 
+$blueR1: #15181e;
+$naranja: #bc5837;
+
 .input {
   cursor: pointer;
   display: flex;
@@ -32,10 +35,49 @@ $grayTextRR: rgb(117, 118, 120);
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
     -o-border-radius: 0px;
-
+  
     &.active {
       border-color: $blueRR;
       background-color: rgba($blueRR, 0.7);
+    }
+  }
+}
+
+.R1Template{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  span {
+    // margin: 0px 5px;
+  }
+  .radiobuttonR1 {
+    margin-right: 10px;
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
+    border: 2px solid rgba($naranja, 0.2);
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    &.activeR1 {
+      border-color: rgba($blueR1,0.6);
+      background-color: rgba($naranja, 0.6) !important;
+    }
+  }
+  .checkBoxR1 {
+    border-color: rgba($blueR1, 0.6);
+    background-color: rgba($naranja, 0.1);
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -o-border-radius: 0px;
+  
+    &.activeR1 {
+      border-color: rgba($blueR1,0.6);
+      background-color:  rgba($naranja, 0.6);
     }
   }
 }

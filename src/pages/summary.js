@@ -32,6 +32,9 @@ const Summary = () => {
   const [waves, setWaves] = useState(null);
   const [loading, setloading] = useState(false);
   const useGetParams = useParamsContinue(null); //este hook obtiene la info de MC siempre y cuando existan los parametros GET
+
+  let template = getCookieForm("template", getLanguage());
+
   const query = useQuery();
   const [tourSelected, setRefresh] = useTourSelected();
   useEffect(() => {
@@ -134,7 +137,11 @@ const Summary = () => {
   if (tourSelected !== null && tourSelected !== "" && tourSelected !== false) {
     let tourS = tourSelected;
     return (
-      <div className="summary">
+      <div
+        className={`summary ${
+          template != null && template === "R1" ? "R1Template" : ""
+        }`}
+      >
         <Header
           title={getTexto("Plan ahead and enjoy an even better vacation!")}
           description={getTexto(

@@ -404,4 +404,29 @@
       }
     }
   }
+  &.R1Template{
+    // background-color: red !important;
+    .price.totalPrice{
+      color: $naranja !important;
+    }
+    .terms{
+      .term{
+        .input div{
+          
+        }
+      }
+    }
+    .actions {
+      // background-color: $blueR1;
+      a{
+        color: white;
+        background-color: $naranja;
+        border-radius:5px !important      ;
+        -webkit-border-radius:5px !important      ;
+        -moz-border-radius:5px !important      ;
+        -ms-border-radius:5px !important      ;
+        -o-border-radius:5px !important      ;
+      }
+    }
+  }
 }
